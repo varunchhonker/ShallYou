@@ -1,0 +1,41 @@
+[{
+	"journeyId": "b",
+	"levelId": "1",
+	"levelName": "Level 1",
+	"levelCompleted": false,
+	"levelProgress":58,
+	"unlocked":true,
+	"styleClass":"levelsPageListItem1"
+},
+{
+	"journeyId": "b",
+	"levelId": "2",
+	"levelName": "Level 2",
+	"levelCompleted": false,
+	"levelProgress":22,
+	"unlocked":true
+},
+{
+	"journeyId": "b",
+	"levelId": "3",
+	"levelName": "Level 3",
+	"levelCompleted": false,
+	"levelProgress":1,
+	"unlocked":true
+},
+{
+	"journeyId": "b",
+	"levelId": "4",
+	"levelName": "Level 4",
+	"levelCompleted": false,
+	"levelProgress":0,
+	"unlocked":false
+},
+{
+	"journeyId": "b",
+	"levelId": "5",
+	"levelName": "Level 5",
+	"levelCompleted": false,
+	"levelProgress":0,
+	"unlocked":false
+}]

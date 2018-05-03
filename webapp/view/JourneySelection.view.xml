@@ -1,0 +1,38 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	controllerName="ShallYou.controller.JourneySelection" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>title}" class="journeyPage" enableScrolling="false">
+		<customHeader>
+			<Bar class="pageHeader">
+				<contentLeft>
+					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons" press="onNavBack"/>
+				</contentLeft>
+				<contentMiddle>
+					<HBox>
+						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
+						<Label text="20" design="Bold"/>
+					</HBox>
+				</contentMiddle>
+				<contentRight>
+					<core:Icon src="sap-icon://action-settings" class="pageHeaderIcons" press="onPressSettings"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<Title text="Select your Journey..." class="journeyPageTitle"></Title>
+			<HBox justifyContent="Center">
+				<RadioButtonGroup selectedIndex="-1" valueState="Warning" select="onJourneySelection">
+					<buttons>
+						<RadioButton id="bollywood" text="Bollywood" class="journeyPageRadioButtons"/>
+						<RadioButton id="hollywood" text="Hollywood" class="journeyPageRadioButtons"/>
+						<RadioButton id="both" text="Mix" class="journeyPageRadioButtons"/>
+					</buttons>
+				</RadioButtonGroup>
+			</HBox>
+			<MessageStrip text="Note: You can change the journey anytime, from the settings menu." showIcon="true" showCloseButton="false"
+				class="journeyPageMessageStrip"></MessageStrip>
+			<HBox justifyContent="End">
+				<Button id="nextButton" class="journeyPageNextButton" enabled="false" icon="sap-icon://open-command-field" text="Next" tooltip="Start Game" press="onPressNext"></Button>
+			</HBox>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,182 @@
+/* Enter your custom styles here */
+
+.sapUiRespGrid.sapUiRespGridHSpace1.paddingGrid {
+    padding: .1rem 2rem;
+}
+
+.customInput1 .sapMInputBaseInner {
+    background-color: #227ccc !important;
+    font-weight: bolder !important;
+    font-family: cursive !important;
+    color: white !important;
+}
+
+.customInput .sapMInputBaseInner {
+    background-color: seagreen !important;
+    font-weight: bolder !important;
+    font-family: cursive !important;
+    color: white !important;
+}
+
+.imageHeightMain {
+    height: 3.5rem;
+}
+
+.imageHeightUsed {
+    height: 2.5rem;
+}
+
+.hintText {
+    text-align: center;
+    color: seagreen;
+    font-size: larger;
+}
+
+.customClass .sapMInputDivWrapper {
+    height: 2rem;
+    width: 80%;
+}
+
+.hBoxPadding {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+/* varun css changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+/*~~~App Level~~~~~~~*/
+
+.app {
+    background-color: white !important;
+}
+
+.pageHeader {
+    background-color: white !important;
+}
+
+.pageHeaderIcons {
+    font-size: 2.6rem !important;
+}
+
+
+/*~~~~Home Page~~~~~~~~*/
+
+.homePageBottomButtonsHBox {
+    position: absolute;
+    bottom: 0px;
+}
+
+.homePageCenterButtons {
+    width: 15rem !important;
+}
+
+.homePageCenterButtons .sapMBtnInner {
+    border-radius: 17px !important;
+}
+
+.homePageBottomButtons {
+    width: 5rem !important;
+}
+
+.homePage>section {
+    background-color: #ec407a !important;
+}
+
+
+/*~~~Journey Page~~~~*/
+
+.journeyPage>section {
+    background-color: #7e57c2 !important;
+}
+
+.journeyPageTitle {
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-family: cursive;
+    font-size: 1.8rem;
+    margin: 1.6rem 0.5rem !important
+}
+
+.journeyPageRadioButtons {
+    background-color: yellow;
+    width: 20rem;
+    border-radius: 17px;
+    margin: 0.5rem;
+}
+
+.journeyPageRadioButtons .sapMRbBLabel {
+    width: 100%;
+    /*color: white;*/
+    font-family: cursive;
+    font-size: 1.8rem;
+}
+
+.journeyPageMessageStrip {
+    margin: 1rem 2.5rem !important;
+}
+
+.journeyPageNextButton {
+    margin: 0.5rem 3rem !important;
+}
+
+
+/*~~~Levels Page~~~~*/
+
+.levelsPage>section {
+    background-color: #bbdefb !important;
+}
+
+.levelsPageSubheaderBar {
+    background-color: #002171 !important;
+    border-bottom: solid 3px white !important;
+}
+
+.levelsPageTitle {
+    color: white !important;
+    font-family: cursive;
+    font-size: 1.8rem;
+}
+
+.levelsPageList>ul {
+    margin: 1.5rem 0.5rem;
+    
+}
+
+.levelsPageListItems {
+    margin: 0.4rem 0rem !important;
+    border-radius: 17px;
+    height: 7rem;
+   /* background-image: url(../images/Backgrounds/images2.jpg);*/
+}
+
+.levelsPageList .sapMLIBSelected {
+    background: #bbdefb;
+    border: black dashed 4px;
+}
+
+.levelsPageListItem1 {
+    background-color: #bb002f;
+}
+
+.levelsPageListItemLabel {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 0.4rem;
+}
+
+.levelsPageListItemScore {
+    text-align: left;
+    font-size: 1.3rem;
+    color: #ffb300;
+    margin-top: 0.7rem;
+}
+
+.levelsPageListItemProgressIndicator {
+        height: 0.1rem;
+    margin: 1rem 0.5rem 0rem 0.5rem;
+    width: 95% !important;
+}

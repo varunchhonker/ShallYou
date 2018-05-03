@@ -1,0 +1,5 @@
+Color codes:
+https://material.io/color/#!/?view.left=0&view.right=0&secondary.color=29B6F6&primary.color=FF1744
+
+Fb integration
+https://blogs.sap.com/2014/09/02/facebook-friends-list-ui5-hana-cloud-platform-rde/ 

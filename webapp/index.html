@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>ShallYou</title>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script id="sap-ui-bootstrap"
+			src="../../resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"ShallYou": ""}'>
+		</script>
+		<script type="text/javascript" src="js/Timer/TimeCircles.js"></script>
+		<link href="js/Timer/TimeCircles.css" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "ShallYou"
+					})
+				}).placeAt("content");
+			});
+			
+			
+			//~~~~~~~~~~To Preload all the image files at app launch for faster response at runtime, but didnt work~~~~//
+			
+			/*$(window).load(function(){
+				$.fn.preload = function() {
+				    this.each(function(){
+				        $('<img />').attr('src',this).appendTo('body').css('display','none');
+				    });
+				}
+			// Usage:
+			$(['images/B.png', ]).preload();
+			});*/
+			
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	</body>
+
+</html>

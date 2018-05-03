@@ -1,0 +1,16 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	controllerName="ShallYou.controller.UserPage" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>title}">
+		<customHeader>
+			<Bar class="pageHeader">
+				<contentLeft>
+					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons" press="onNavBack"/>
+				</contentLeft>
+				
+			</Bar>
+		</customHeader>
+		<content>
+			<Text text="Find and manage user profile details here."/>
+		</content>
+	</Page>
+</mvc:View>

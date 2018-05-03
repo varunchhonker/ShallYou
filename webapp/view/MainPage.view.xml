@@ -1,0 +1,82 @@
+<mvc:View controllerName="ShallYou.controller.MainPage" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<VBox>
+		<l:Grid id="gridHeader" defaultSpan="L4 M4 S4">
+			<l:content>
+				<core:Icon src="sap-icon://favorite"/>
+				<Label text="This is test"/>
+				<HBox justifyContent="End">
+					<core:Icon src="sap-icon://appear-offline"/>
+					<core:Icon src="sap-icon://appear-offline"/>
+					<core:Icon src="sap-icon://appear-offline"/>
+					<core:Icon src="sap-icon://appear-offline"/>
+					<core:Icon src="sap-icon://appear-offline"/>
+				</HBox>
+			</l:content>
+		</l:Grid>
+		<!--<HBox justifyContent="Center">-->
+		<!--	<Input id="mainInput" maxLength="1" class="customInput"></Input>-->
+		<!--	<Button id="confirm" text="{i18n>Confirm}" press="onConfirm"></Button>-->
+		<!--</HBox>-->
+		<HBox justifyContent="Center" class="hBoxPadding">
+			<Input id="bi" class="customClass customInput" enabled="false"/>
+			<Input id="oi" class="customClass customInput" enabled="false"/>
+			<Input id="l1i" class="customClass customInput" enabled="false"/>
+			<Input id="l2i" class="customClass customInput" enabled="false"/>
+			<Input id="yi" class="customClass customInput" enabled="false"/>
+			<Input id="wi" class="customClass customInput" enabled="false"/>
+			<Input id="o1i" class="customClass customInput" enabled="false"/>
+			<Input id="o2i" class="customClass customInput" enabled="false"/>
+			<Input id="di" class="customClass customInput" enabled="false"/>
+		</HBox>
+		<HBox justifyContent="Center">
+			<Image id="b" class="imageHeightMain"/>
+			<Image id="o" class="imageHeightMain"/>
+			<Image id="l1" class="imageHeightMain"/>
+			<Image id="l2" class="imageHeightMain"/>
+			<Image id="y" class="imageHeightMain"/>
+			<Image id="w" class="imageHeightMain"/>
+			<Image id="o1" class="imageHeightMain"/>
+			<Image id="o2" class="imageHeightMain"/>
+			<Image id="d" class="imageHeightMain"/>
+		</HBox>
+		<Image id="hintImg"></Image>
+		<Text id="hintText" class="hintText" textAlign="Center"></Text>
+		<l:Grid id="gridLayout" defaultSpan="L2 M2 S2" class="paddingGrid">
+			<l:content></l:content>
+		</l:Grid>
+		<HBox justifyContent="Center">
+			<Button id="ab" press="onPressChar" text="A"/>
+			<Button id="bb" press="onPressChar" text="B"/>
+			<Button id="cb" press="onPressChar" text="C"/>
+			<Button id="db" press="onPressChar" text="D"/>
+			<Button id="eb" press="onPressChar" text="E"/>
+			<Button id="fb" press="onPressChar" text="F"/>
+			<Button id="gb" press="onPressChar" text="G"/>
+			<Button id="hb" press="onPressChar" text="H"/>
+			<Button id="ib" press="onPressChar" text="I"/>
+		</HBox>
+		<HBox justifyContent="Center">
+			<Button id="jb" press="onPressChar" text="J"/>
+			<Button id="kb" press="onPressChar" text="K"/>
+			<Button id="lb" press="onPressChar" text="L"/>
+			<Button id="mb" press="onPressChar" text="M"/>
+			<Button id="nb" press="onPressChar" text="N"/>
+			<Button id="ob" press="onPressChar" text="O"/>
+			<Button id="pb" press="onPressChar" text="P"/>
+			<Button id="qb" press="onPressChar" text="Q"/>
+			<Button id="rb" press="onPressChar" text="R"/>
+		</HBox>
+		<HBox justifyContent="Center">
+			<Button id="sb" press="onPressChar" text="S"/>
+			<Button id="tb" press="onPressChar" text="T"/>
+			<Button id="ub" press="onPressChar" text="U"/>
+			<Button id="vb" press="onPressChar" text="V"/>
+			<Button id="wb" press="onPressChar" text="W"/>
+			<Button id="xb" press="onPressChar" text="X"/>
+			<Button id="yb" press="onPressChar" text="Y"/>
+			<Button id="zb" press="onPressChar" text="Z"/>
+			<Button id="numb" press="onPressNum" text="0-9"/>
+		</HBox>
+	</VBox>
+</mvc:View>
