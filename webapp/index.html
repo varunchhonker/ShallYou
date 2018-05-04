@@ -17,7 +17,28 @@
 		<script type="text/javascript" src="js/Timer/TimeCircles.js"></script>
 		<link href="js/Timer/TimeCircles.css" rel="stylesheet"> 
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-
+		
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-functions.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyDKY3fjVNQtDtuBAJNVhi7DYkZy_KFy1Ds",
+		    authDomain: "shallyou-817e0.firebaseapp.com",
+		    databaseURL: "https://shallyou-817e0.firebaseio.com",
+		    projectId: "shallyou-817e0",
+		    storageBucket: "shallyou-817e0.appspot.com",
+		    messagingSenderId: "414685995754"
+		  };
+		  firebase.initializeApp(config);
+		  firebase.auth().signInAnonymously().catch(function(error) {
+				// Handle Errors here.
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				// ...
+			});
+		</script>
 		<script>
 			sap.ui.getCore().attachInit(function() {
 				new sap.m.Shell({
