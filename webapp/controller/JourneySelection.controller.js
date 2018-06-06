@@ -13,20 +13,17 @@ sap.ui.define([
 		onInit: function() {
 
 		},
-		
-		onJourneySelection:function(oEvent){
+
+		onJourneySelection: function(oEvent) {
 			this.getView().byId("nextButton").setEnabled(true);
 		},
-		
+
 		onPressNext: function(oEvent) {
-			
-			//var journeyCode="b";
-			
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("levels");
+			//do service call to set journey
+			this.getOwnerComponent().getModel("global").setProperty("/firstTime", false);
+			this.getRouter().navTo("levels");
 		}
-		
-		
+
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).

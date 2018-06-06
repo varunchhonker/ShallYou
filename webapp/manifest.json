@@ -87,9 +87,9 @@
 				"name": "levels",
 				"target": "levels"
 			}, {
-				"pattern": "detail",
-				"name": "detail",
-				"target": "detail"
+				"pattern": "mainpage/{levelId}",
+				"name": "mainpage",
+				"target": "mainpage"
 			},
 			{
 				"pattern": "settings",
@@ -120,7 +120,7 @@
 				"levels":{
 					"viewName": "Levels"	
 				},
-				"detail": {
+				"mainpage": {
 					"viewName": "MainPage"
 				},
 				"settings": {

@@ -26,7 +26,7 @@
 		</subHeader>
 		<content>
 			<!--<Title text="Select Level..." class="levelsPageTitle"></Title>-->
-			<List mode="SingleSelectMaster" items="{path: '/'}" rememberSelections="false" selectionChange="onSelectLevel" class="levelsPageList">
+			<List id="levelList" mode="SingleSelectMaster" items="{path: '/'}" rememberSelections="false" selectionChange="onSelectLevel" class="levelsPageList">
 				<CustomListItem type="Inactive" class="levelsPageListItems">
 					<VBox>
 						<HBox justifyContent="SpaceAround">
@@ -36,6 +36,9 @@
 						</HBox>
 						<ProgressIndicator class="levelsPageListItemProgressIndicator" percentValue="{levelProgress}" showValue="true" state="Success"/>
 					</VBox>
+					<customData>
+						<core:CustomData key="unlocked" value="{=${unlocked}.toString()}" writeToDom="true"/>
+					</customData>
 				</CustomListItem>
 			</List>
 		</content>

@@ -56,13 +56,13 @@ sap.ui.define([
 		onNavBack: function() {
 			var sPreviousHash = History.getInstance().getPreviousHash();
 
-			if (sPreviousHash !== undefined) {
+			if (sPreviousHash !== undefined && !sPreviousHash.toLowerCase().includes("journey")) {
 				// The history contains a previous entry
 				history.go(-1);
 			} else {
 				// Otherwise we go backwards with a forward history
 				var bReplace = true;
-				this.getRouter().navTo("usersearch", {}, bReplace);
+				this.getRouter().navTo("home", {}, bReplace);
 			}
 		},
 

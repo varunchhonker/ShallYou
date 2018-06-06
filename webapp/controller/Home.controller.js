@@ -44,10 +44,11 @@ sap.ui.define([
 		},
 
 		onPressPlay: function(oEvent) {
-			var firstTime = true;
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			var firstTime=this.getOwnerComponent().getModel("global").getProperty("/firstTime");
 			if (firstTime) {
-				oRouter.navTo("journey");
+				this.getRouter().navTo("journey");
+			}else{
+				this.getRouter().navTo("levels");
 			}
 		},
 

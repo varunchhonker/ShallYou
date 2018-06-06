@@ -1,0 +1,18 @@
+Get Levels:
+https://us-central1-shallyou-817e0.cloudfunctions.net/onGetUnlockedLevel?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1
+
+Get Next Movie:
+https://us-central1-shallyou-817e0.cloudfunctions.net/getNextMovieNew?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=Level1
+https://us-central1-shallyou-817e0.cloudfunctions.net/getNextMovies?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=Level1
+
+Check Char
+https://us-central1-shallyou-817e0.cloudfunctions.net/checkChar?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1$level=Level1?chkChar=<character>&userId=zLJcPPx9ChbD52eiKcQeOnq8fst1
+
+Show Movie
+https://us-central1-shallyou-817e0.cloudfunctions.net/getShowMovie?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&movieIdl=<id>
+
+Skip Movie
+https://us-central1-shallyou-817e0.cloudfunctions.net/onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=<eiither Ad or Coin>
+
+TimeOut
+https://us-central1-shallyou-817e0.cloudfunctions.net/onTimeOut?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1

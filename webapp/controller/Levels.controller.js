@@ -11,17 +11,58 @@ sap.ui.define([
 		 * @memberOf ShallYou.view.InitialView
 		 */
 		onInit: function() {
-			
-			this.getView().setModel(new sap.ui.model.json.JSONModel("json/bollyLevels.json"));
+			this.getRouter().getRoute("levels").attachPatternMatched(this.onRouteMatched, this);
+			//this.getView().setModel(new sap.ui.model.json.JSONModel("json/bollyLevels.json"));
+			this.getView().setModel(new sap.ui.model.json.JSONModel());
+
 		},
-		
-		onSelectLevel:function(oEvent){
+
+		onRouteMatched: function() {
+			var oController = this;
+			this.byId("levelList").removeSelections(true);
+			var url = "onGetUnlockedLevel?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1";
+
+			serviceObject.read(url, "", this.getLevelsCallback, this);
+		},
+
+		getLevelsCallback: function(data, response) {
+			if (response) {
+				var levelIds = Object.keys(data).sort();
+				var levels = [];
+				for (var i = 0; i < levelIds.length; i++) {
+					levels.push({
+						"levelId": levelIds[i],
+						"levelName": levelIds[i],
+						"unlocked": data[levelIds[i]],
+						"levelProgress": 0
+					});
+				}
+
+				this.getView().getModel().setData(levels);
+
+			}
+		},
+
+		onSelectLevel: function(oEvent) {
 			//var levelId="1";
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("detail");
+			var levelObject = oEvent.getParameters().listItem.getBindingContext().getObject();
+
+			if (levelObject.unlocked) {
+				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+				oRouter.navTo("mainpage", {
+					levelId: levelObject.levelId
+				});
+			} else {
+				var icon = oEvent.getParameters().listItem.getAggregation("content")[0].getAggregation("items")[0].getAggregation("items")[0];
+				icon.addStyleClass("shake");
+				window.setTimeout(function() {
+					icon.removeStyleClass("shake");
+				}, 2000);
+
+				this.byId("levelList").removeSelections(true);
+			}
 		}
-		
-		
+
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).

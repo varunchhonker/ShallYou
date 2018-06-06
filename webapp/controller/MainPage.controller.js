@@ -1,12 +1,14 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
+	"ShallYou/controller/BaseController"
 
-], function(Controller) {
+], function(BaseController) {
 	"use strict";
 
-	return Controller.extend("ShallYou.controller.MainPage", {
+	return BaseController.extend("ShallYou.controller.MainPage", {
 
 		onInit: function() {
+			this.getRouter().getRoute("mainpage").attachPatternMatched(this.onRouteMatched, this);
+
 			var attempts = {
 				failedAttempts: 0,
 				possibleAttempts: 9,
@@ -19,23 +21,26 @@ sap.ui.define([
 			// this.getView().byId("used").setSrc(sRootPath + "/used.png");	
 			// });
 
-			var db = null;
-
-			document.addEventListener('deviceready', function() {
-				db = window.sqlitePlugin.openDatabase({
-					name: 'demo.db',
-					location: 'default'
-				});
-				db.sqlBatch([
-					'CREATE TABLE IF NOT EXISTS DemoTable (name, score)', ['INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]],
-					['INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]],
-				], function() {
-					console.log('Populated database OK');
-				}, function(error) {
-					console.log('SQL batch ERROR: ' + error.message);
-				});
-			});
 		},
+
+		onRouteMatched: function(oEvent) {
+			var oController = this;
+			var levelId = oEvent.getParameter("arguments").levelId;
+			var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad"
+			serviceObject.read(url, levelId, this.onSkipCallback, this);
+		},
+
+		onSkipCallback: function(data, response, levelId) {
+			if (response) {
+				var url = "getNextMovies?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=" + levelId;
+				serviceObject.read(url, "", this.getNextMovieCallback, this);
+			}
+		},
+
+		getNextMovieCallback: function(data, response) {
+
+		},
+
 		initializeView: function() {
 			var attempts = {
 				failedAttempts: 0,
