@@ -26,12 +26,13 @@ sap.ui.define([
 			jQuery.sap.require("ShallYou.js.service");
 
 			this.setModel(new JSONModel({
-				imagePath: jQuery.sap.getModulePath("ShallYou.images"),
+				modulePath: jQuery.sap.getModulePath("ShallYou"),
 				firstTime: true
 			}).setDefaultBindingMode("OneWay"), "global");
 			// set the device model
 			//	var sRootPath =jQuery.sap.getModulePath("ShallYou.images");
 			this.setModel(models.createDeviceModel(), "device");
+			
 		}
 	});
 });

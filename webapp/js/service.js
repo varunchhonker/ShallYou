@@ -1,4 +1,4 @@
-jQuery.sap.declare('ShallYou.service');
+jQuery.sap.declare('ShallYou.js.service');
 
 //baseURls
 var serverPath = "https://us-central1-shallyou-817e0.cloudfunctions.net";

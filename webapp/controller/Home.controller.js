@@ -15,32 +15,7 @@ sap.ui.define([
 		},
 
 		onAfterRendering: function() {
-			/*$(".timerContainer").TimeCircles({
-				start: false,
-				count_past_zero: false,
-
-				time: {
-					Days: {
-						show: false,
-						color: "#C0C8CF"
-					},
-					Hours: {
-						show: false,
-						color: "#C0C8CF"
-					},
-					Minutes: {
-						show: false,
-						color: "#C0C8CF"
-					},
-					Seconds: {
-						text: "",
-						color: "#C0C8CF"
-					}
-				}
-			});
-			var oController = this;
-			$(".timerContainer").TimeCircles().addListener(oController.onTimerChange);*/
-
+			
 		},
 
 		onPressPlay: function(oEvent) {
@@ -49,20 +24,6 @@ sap.ui.define([
 				this.getRouter().navTo("journey");
 			}else{
 				this.getRouter().navTo("levels");
-			}
-		},
-
-		startTimer: function() {
-			$(".timerContainer").TimeCircles().start();
-			/*$(".timerContainer").animate({height: 'toggle'}, "fast");
-			$(".timerContainer").animate({height: 'toggle'}, "fast");*/
-
-		},
-
-		onTimerChange: function(unit, value, total) {
-			//console.log(unit, value, total);
-			if (value === 0) {
-				sap.m.MessageToast.show("Times's Up!");
 			}
 		},
 

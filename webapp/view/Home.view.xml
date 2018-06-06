@@ -28,7 +28,7 @@
 		<content>
 			<l:Grid id="gridHeader" defaultSpan="L12 M12 S12">
 				<l:content>
-					<Image id="logo" src="{global>/imagePath}/logo.png" densityAware="true" height="100%" width="100%">
+					<Image id="logo" src="{global>/modulePath}/images/logo.png" densityAware="true" height="100%" width="100%">
 						<layoutData>
 							<FlexItemData growFactor="1"/>
 						</layoutData>
@@ -43,8 +43,8 @@
 						<Button icon="sap-icon://contacts" text="Rules" press="onPressRules" class="homePageCenterButtons"></Button>
 					</HBox>
 					<HBox justifyContent="Center" class="homePageBottomButtonsHBox">
-						<Button icon="{global>/imagePath}/fb.png" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
-						<Button icon="{global>/imagePath}/gplus.png" tooltip="Share On Google+" class="homePageBottomButtons"></Button>
+						<Button icon="{global>/modulePath}/images/fb.png" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
+						<Button icon="{global>/modulePath}/images/gplus.png" tooltip="Share On Google+" class="homePageBottomButtons"></Button>
 						<Button icon="sap-icon://action" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
 						<Button icon="sap-icon://favorite" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
 					</HBox>
