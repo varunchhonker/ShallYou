@@ -12,17 +12,11 @@ sap.ui.define([
 		 */
 		onInit: function() {
 			this.getRouter().getRoute("levels").attachPatternMatched(this.onRouteMatched, this);
-			//this.getView().setModel(new sap.ui.model.json.JSONModel("json/bollyLevels.json"));
-			this.getView().setModel(new sap.ui.model.json.JSONModel());
-
 		},
 
 		onRouteMatched: function() {
-			var oController = this;
 			this.byId("levelList").removeSelections(true);
-			var url = "onGetUnlockedLevel?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1";
-
-			serviceObject.read(url, "", this.getLevelsCallback, this);
+			//serviceObject.read("onGetUnlockedLevel?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1", "", this.getLevelsCallback, this);
 		},
 
 		getLevelsCallback: function(data, response) {
@@ -39,15 +33,14 @@ sap.ui.define([
 				}
 
 				this.getView().getModel().setData(levels);
-
 			}
 		},
 
 		onSelectLevel: function(oEvent) {
 			//var levelId="1";
-			var levelObject = oEvent.getParameters().listItem.getBindingContext().getObject();
+			var levelObject = oEvent.getParameters().listItem.getBindingContext("global").getObject();
 
-			if (levelObject.unlocked) {
+			if (!levelObject.locked) {
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 				oRouter.navTo("mainpage", {
 					levelId: levelObject.levelId
@@ -58,9 +51,16 @@ sap.ui.define([
 				window.setTimeout(function() {
 					icon.removeStyleClass("shake");
 				}, 2000);
-
 				this.byId("levelList").removeSelections(true);
 			}
+
+			/*Hardcoding for testing*/
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("mainpage", {
+				levelId: "Level1"
+			});
+			/*`````````````*/
+
 		}
 
 		/**

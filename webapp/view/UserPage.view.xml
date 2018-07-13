@@ -6,7 +6,12 @@
 				<contentLeft>
 					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons" press="onNavBack"/>
 				</contentLeft>
-				
+				<contentMiddle>
+					<HBox>
+						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
+						<Label text="{global>/Coins}" design="Bold"/>
+					</HBox>
+				</contentMiddle>
 			</Bar>
 		</customHeader>
 		<content>

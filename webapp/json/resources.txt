@@ -16,3 +16,9 @@ https://us-central1-shallyou-817e0.cloudfunctions.net/onSkip?userId=zLJcPPx9ChbD
 
 TimeOut
 https://us-central1-shallyou-817e0.cloudfunctions.net/onTimeOut?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1
+
+set journey
+https://us-central1-shallyou-817e0.cloudfunctions.net/changeJourney?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&journey=HollyWood 
+
+get user profile
+https://us-central1-shallyou-817e0.cloudfunctions.net/getUserProfile?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1 

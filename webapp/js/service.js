@@ -1,7 +1,7 @@
 jQuery.sap.declare('ShallYou.js.service');
 
 //baseURls
-var serverPath = "https://us-central1-shallyou-817e0.cloudfunctions.net";
+//var serverPath = "https://us-central1-shallyou-817e0.cloudfunctions.net";
 var serverPath = "/services/";
 
 //----------------------------------URL FOR GET METHODS-------------------------------
@@ -15,9 +15,9 @@ var serviceObject = {
 		oBusyIndicator.open();
 		$.ajax( //Logged-in User Details
 			{
-				headers: {
+				/*headers: {
 					'Access-Control-Allow-Origin': 'https://us-central1-shallyou-817e0.cloudfunctions.net'
-				},
+				},*/
 				crossDomain: true,
 				url: serverPath + subPath,
 				method: "get",

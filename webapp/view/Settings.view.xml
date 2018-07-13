@@ -6,7 +6,12 @@
 				<contentLeft>
 					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons" press="onNavBack"/>
 				</contentLeft>
-				
+				<contentMiddle>
+					<HBox>
+						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
+						<Label text="{global>/Coins}" design="Bold"/>
+					</HBox>
+				</contentMiddle>
 			</Bar>
 		</customHeader>
 		<content>
@@ -14,6 +19,17 @@
 				<l:content>
 					<Label text="Sound"/>
 					<Switch state="true" customTextOn="On" customTextOff="Off"/>
+					<Label text="Current Journey"/>
+					<Text text="{global>/Journey}">
+						<layoutData>
+							<l:GridData span="L4 M4 S4"/>
+						</layoutData>
+					</Text>
+					<Button icon="sap-icon://edit" press="onPressChangeJourney">
+						<layoutData>
+							<l:GridData span="L2 M2 S2"/>
+						</layoutData>
+					</Button>
 				</l:content>
 			</l:Grid>
 		</content>

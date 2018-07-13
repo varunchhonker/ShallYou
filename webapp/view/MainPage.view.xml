@@ -1,6 +1,6 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	controllerName="ShallYou.controller.MainPage" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="ShallYou.js">
-	<Page title="{i18n>title}" class="levelsPage" enableScrolling="false" >
+	<Page title="{i18n>title}" class="levelsPage" enableScrolling="false">
 		<customHeader>
 			<Bar class="pageHeader">
 				<contentLeft>
@@ -9,7 +9,7 @@
 				<contentMiddle>
 					<HBox>
 						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
-						<Label text="20" design="Bold"/>
+						<Label text="{global>/Coins}" design="Bold"/>
 					</HBox>
 				</contentMiddle>
 				<contentRight>
@@ -62,16 +62,21 @@
 				</HBox>
 			</VBox>
 			<VBox class="mainPagePuzzleVBox" justifyContent="Center" alignContent="Center" alignItems="Center">
-				<Carousel class="sapUiContentPadding" loop="true">
+				<Carousel class="sapUiContentPadding" arrowsPlacement="Content" loop="false" showPageIndicator="false" pageIndicatorPlacement="Top">
 					<pages>
-						<Text id="hintText" class="hintText" textAlign="Center"></Text>
+						<FlexBox justifyContent="Center">
+							<Text id="hintText1" class="hintText" textAlign="Center"></Text>
+						</FlexBox>
+						<FlexBox justifyContent="Center">
+							<Text id="hintText2" class="hintText" textAlign="Center"></Text>
+						</FlexBox>
 					</pages>
 				</Carousel>
-				<l:Grid id="gridLayout" defaultSpan="L2 M2 S2" class="paddingGrid">
+				<l:Grid id="gridLayout" defaultSpan="L1 M1 S2" class="paddingGrid">
 					<l:content></l:content>
 				</l:Grid>
 			</VBox>
-			<VBox class="mainPageKeyboardVBox">
+			<FlexBox direction="Column" justifyContent="Center" alignContent="Center" alignItems="Center" class="mainPageKeyboardVBox" width="100%">
 				<HBox justifyContent="Center" alignContent="Center" alignItems="Center">
 					<Button id="ab" press="onPressChar" text="A"/>
 					<Button id="bb" press="onPressChar" text="B"/>
@@ -105,7 +110,7 @@
 					<Button id="zb" press="onPressChar" text="Z"/>
 					<Button id="numb" press="onPressNum" text="0-9"/>
 				</HBox>
-			</VBox>
+			</FlexBox>
 		</content>
 	</Page>
 </mvc:View>

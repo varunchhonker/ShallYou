@@ -9,7 +9,7 @@
 				<contentMiddle>
 					<HBox>
 						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
-						<Label text="20" design="Bold"/>
+						<Label text="{global>/Coins}" design="Bold"/>
 					</HBox>
 				</contentMiddle>
 				<contentRight>
@@ -42,11 +42,13 @@
 					<HBox justifyContent="Center">
 						<Button icon="sap-icon://contacts" text="Rules" press="onPressRules" class="homePageCenterButtons"></Button>
 					</HBox>
-					<HBox justifyContent="Center" class="homePageBottomButtonsHBox">
-						<Button icon="{global>/modulePath}/images/fb.png" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
-						<Button icon="{global>/modulePath}/images/gplus.png" tooltip="Share On Google+" class="homePageBottomButtons"></Button>
-						<Button icon="sap-icon://action" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
-						<Button icon="sap-icon://favorite" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
+					<HBox justifyContent="Center">
+						<HBox justifyContent="Center" class="homePageBottomButtonsHBox">
+							<Button icon="{global>/modulePath}/images/fb.png" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
+							<Button icon="{global>/modulePath}/images/gplus.png" tooltip="Share On Google+" class="homePageBottomButtons"></Button>
+							<Button icon="sap-icon://action" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
+							<Button icon="sap-icon://favorite" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
+						</HBox>
 					</HBox>
 				</l:content>
 			</l:Grid>

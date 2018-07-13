@@ -9,7 +9,7 @@
 				<contentMiddle>
 					<HBox>
 						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
-						<Label text="20" design="Bold"/>
+						<Label text="{global>/Coins}" design="Bold"/>
 					</HBox>
 				</contentMiddle>
 				<contentRight>
@@ -20,11 +20,11 @@
 		<content>
 			<Title text="Select your Journey..." class="journeyPageTitle"></Title>
 			<HBox justifyContent="Center">
-				<RadioButtonGroup selectedIndex="-1" valueState="Warning" select="onJourneySelection">
+				<RadioButtonGroup id="journeyRBG" selectedIndex="-1" valueState="Warning" select="onJourneySelection">
 					<buttons>
-						<RadioButton id="bollywood" text="Bollywood" class="journeyPageRadioButtons"/>
-						<RadioButton id="hollywood" text="Hollywood" class="journeyPageRadioButtons"/>
-						<RadioButton id="both" text="Mix" class="journeyPageRadioButtons"/>
+						<RadioButton id="Bollywood" text="Bollywood" class="journeyPageRadioButtons"/>
+						<RadioButton id="Hollywood" text="Hollywood" class="journeyPageRadioButtons"/>
+						<RadioButton id="Mix" text="Mix" class="journeyPageRadioButtons"/>
 					</buttons>
 				</RadioButtonGroup>
 			</HBox>

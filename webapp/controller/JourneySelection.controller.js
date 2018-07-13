@@ -11,18 +11,49 @@ sap.ui.define([
 		 * @memberOf ShallYou.view.InitialView
 		 */
 		onInit: function() {
+			this.getRouter().getRoute("journey").attachPatternMatched(this.onRouteMatched, this);
+		},
 
+		onRouteMatched: function() {
+			var journey = this.getOwnerComponent().getModel("global").getProperty("/Journey");
+			var buttons = this.byId("journeyRBG").getButtons();
+			for (var i = 0; i < buttons.length; i++) {
+				if (buttons[i].getText() === journey) {
+					break;
+				}
+			}
+			this.byId("journeyRBG").setSelectedButton(buttons[i]);
+		},
+
+		onPressNext: function(oEvent) {
+			//do service call to set journey
+			this.getView().byId("nextButton").setEnabled(false);
+			var journey = this.byId("journeyRBG").getSelectedButton().getText();
+			serviceObject.read("changeJourney?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&journey=" + journey, "", this.setJourneyCallback, this);
 		},
 
 		onJourneySelection: function(oEvent) {
 			this.getView().byId("nextButton").setEnabled(true);
 		},
 
-		onPressNext: function(oEvent) {
-			//do service call to set journey
-			this.getOwnerComponent().getModel("global").setProperty("/firstTime", false);
-			this.getRouter().navTo("levels");
-		}
+		setJourneyCallback: function(data, response) {
+			if (response) {
+				var oController=this;
+				this.getOwnerComponent().getModel("global").setProperty("/firstTime", false);
+				setTimeout(function() {
+					serviceObject.read("getUserProfile?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1", "", oController.getUserProfileCallback, oController);
+				}, 3000);
+			}
+		},
+
+		getUserProfileCallback: function(data, response) {
+			if (response) {
+				this.getOwnerComponent().getModel("global").setProperty("/Journey", data.journey);
+				this.getOwnerComponent().getModel("global").setProperty("/Coins", data.coinsLeft);
+				this.getOwnerComponent().getModel("global").setProperty("/Levels", data.level);
+				this.getRouter().navTo("levels");
+			}
+		},
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

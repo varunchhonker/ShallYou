@@ -9,7 +9,7 @@
 				<contentMiddle>
 					<HBox>
 						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
-						<Label text="20" design="Bold"/>
+						<Label text="{global>/Coins}" design="Bold"/>
 					</HBox>
 				</contentMiddle>
 				<contentRight>
@@ -26,18 +26,18 @@
 		</subHeader>
 		<content>
 			<!--<Title text="Select Level..." class="levelsPageTitle"></Title>-->
-			<List id="levelList" mode="SingleSelectMaster" items="{path: '/'}" rememberSelections="false" selectionChange="onSelectLevel" class="levelsPageList">
+			<List id="levelList" mode="SingleSelectMaster" items="{global>/Levels}" rememberSelections="false" selectionChange="onSelectLevel" class="levelsPageList">
 				<CustomListItem type="Inactive" class="levelsPageListItems">
 					<VBox>
 						<HBox justifyContent="SpaceAround">
-							<core:Icon size="2rem" src="{=${unlocked} ? 'sap-icon://begin' : 'sap-icon://locked'}" class="sapUiSmallMarginBegin"/>
-							<Label text="{levelName}" class="levelsPageListItemLabel"/>
-							<Label text="{levelProgress}/100" class="levelsPageListItemScore"/>
+							<core:Icon size="2rem" src="{=${global>locked} ? 'sap-icon://locked' : 'sap-icon://begin'}" class="sapUiSmallMarginBegin"/>
+							<Label text="{global>name}" class="levelsPageListItemLabel"/>
+							<Label text="{global>progressIC}/100" class="levelsPageListItemScore"/>
 						</HBox>
-						<ProgressIndicator class="levelsPageListItemProgressIndicator" percentValue="{levelProgress}" showValue="true" state="Success"/>
+						<ProgressIndicator class="levelsPageListItemProgressIndicator" percentValue="{global>progressIC}" showValue="true" state="Success"/>
 					</VBox>
 					<customData>
-						<core:CustomData key="unlocked" value="{=${unlocked}.toString()}" writeToDom="true"/>
+						<core:CustomData key="locked" value="{=${global>locked}.toString()}" writeToDom="true"/>
 					</customData>
 				</CustomListItem>
 			</List>

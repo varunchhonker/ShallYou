@@ -23,11 +23,14 @@ sap.ui.define([
 			UIComponent.prototype.init.apply(this, arguments);
 			this.getRouter().initialize();
 
-			jQuery.sap.require("ShallYou.js.service");
+			//jQuery.sap.require("ShallYou.js.service");
 
 			this.setModel(new JSONModel({
 				modulePath: jQuery.sap.getModulePath("ShallYou"),
-				firstTime: true
+				firstTime: true,
+				failedAttempts: 0,
+				possibleAttempts: 9,
+				usedCharacters: ""
 			}).setDefaultBindingMode("OneWay"), "global");
 			// set the device model
 			//	var sRootPath =jQuery.sap.getModulePath("ShallYou.images");

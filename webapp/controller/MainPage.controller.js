@@ -1,29 +1,29 @@
 sap.ui.define([
 	"ShallYou/controller/BaseController"
 
-], function(BaseController) {
+], function (BaseController) {
 	"use strict";
 
 	return BaseController.extend("ShallYou.controller.MainPage", {
 
-		onInit: function() {
+		onInit: function () {
 			this.getRouter().getRoute("mainpage").attachPatternMatched(this.onRouteMatched, this);
 
-			var attempts = {
+			/*var attempts = {
 				failedAttempts: 0,
 				possibleAttempts: 9,
 				usedCharacters: ""
 			};
 			var oModel = new sap.ui.model.json.JSONModel("attempts");
 			oModel.setData(attempts);
-			this.getView().setModel(oModel);
-			this.initializeView();
+			this.getView().setModel(oModel);*/
+			//this.initializeView();
 			// this.getView().byId("used").setSrc(sRootPath + "/used.png");	
 			// });
 
 		},
 
-		onAfterRendering: function() {
+		onAfterRendering: function () {
 
 			$(".timerContainer").TimeCircles({
 				start: false,
@@ -53,67 +53,83 @@ sap.ui.define([
 
 		},
 
-		onRouteMatched: function(oEvent) {
+		onRouteMatched: function (oEvent) {
 			var oController = this;
 			var levelId = oEvent.getParameter("arguments").levelId;
-			var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad"
-			serviceObject.read(url, levelId, this.onSkipCallback, this);
+			/*var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad"
+			serviceObject.read(url, levelId, this.onSkipCallback, this);*/
+
+			/*testing*/
+			this.onSkipCallback("", true, levelId);
+			/*`````````*/
+			var gridControl = this.getView().byId("gridLayout");
+			gridControl.destroyContent();
 		},
 
-		onSkipCallback: function(data, response, levelId) {
+		onSkipCallback: function (data, response, levelId) {
 			if (response) {
 				var url = "getNextMovies?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=" + levelId;
 				serviceObject.read(url, "", this.getNextMovieCallback, this);
 			}
 		},
 
-		getNextMovieCallback: function(data, response) {
-
+		getNextMovieCallback: function (data, response) {
+			if (response) {
+				this.getOwnerComponent().getModel("global").setProperty("/Movie", data);
+				this.initializeView(data);
+			}
 		},
 
-		initializeView: function() {
-			var attempts = {
-				failedAttempts: 0,
-				possibleAttempts: 9,
-				usedCharacters: ""
-			};
-			// this.getView().getModel.setData(attempts);
-			var mName = "This is test";
-			var mHintText =
-				"This is a real challenge. Remake of this movie has greated star of Indian cinema as voted by BBC news online users.";
-			this.getView().byId("hintText").setText(mHintText);
+		initializeView: function (data) {
+			var mName = data.name;
+			this.getView().byId("hintText1").setText(data.hint1);
+			this.getView().byId("hintText1").setText(data.hint2);
 			var mLength = mName.length;
+			var mNameArray = mName.split(" ");
+
 			var inputField = null;
 			var gridControl = this.getView().byId("gridLayout");
-			for (var i = 0; i < mLength; i++) {
+			/*for (var i = 0; i < mLength; i++) {
 				if (mName[i] === " ") {
 					gridControl.addContent(new sap.m.Text());
 				} else {
-					inputField = new sap.m.Input(this.createId("Input" + i));
+					inputField = new sap.m.Input(this.createId("Input" + i)).addStyleClass("mainPageMovieAlphabetInput");
 					inputField.setEnabled(false);
 					inputField.addStyleClass("inputColor");
 					gridControl.addContent(inputField);
 				}
+			}*/
+
+			for (var i = 0; i < mNameArray.length; i++) {
+				var leftSpaces = 6 - Math.ceil(gridControl.getContent().length / 6);
+				if (leftSpaces < mNameArray[i].length) {
+					for (var j = 0; j < leftSpaces.length; j++) {
+						gridControl.addContent(new sap.m.Text());
+					}
+				} else {
+					for (var j = 0; j < mNameArray[i].length; j++) {
+						inputField = new sap.m.Input(this.createId("Input" + j)).addStyleClass("mainPageMovieAlphabetInput");
+						inputField.setEnabled(false);
+						inputField.addStyleClass("inputColor");
+						gridControl.addContent(inputField);
+					}
+				}
 			}
-			// this.getView().byId("hintImage").onAfterRendering({
-			/*var sRootPath = jQuery.sap.getModulePath("ShallYou.images");
-			var sImagePath = sRootPath + "/B.png";
-			this.getView().byId("b").setSrc(sImagePath);
-			this.getView().byId("o").setSrc(sRootPath + "/O.png");
-			this.getView().byId("l1").setSrc(sRootPath + "/L.png");
-			this.getView().byId("l2").setSrc(sRootPath + "/L.png");
-			this.getView().byId("y").setSrc(sRootPath + "/Y.png");
-			this.getView().byId("w").setSrc(sRootPath + "/W.png");
-			this.getView().byId("o1").setSrc(sRootPath + "/O.png");
-			this.getView().byId("o2").setSrc(sRootPath + "/O.png");
-			this.getView().byId("d").setSrc(sRootPath + "/D.png");*/
+			this.startTimer();
+			//this.createGameStartAnimation();
+
 		},
-		onPressChar: function(oEvent) {
+		onPressChar: function (oEvent) {
+
 			var button = oEvent.getSource();
 			button.setEnabled(false);
 			var buttonId = oEvent.getSource().getId().slice(-2);
 			var char = buttonId.charAt(0).toUpperCase();
-			var mName = "This is test";
+
+			//var url = "checkChar?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=Level1&chkChar=" + char;
+			//serviceObject.read(url, "", this.getCheckCharCallback, this);
+
+			var mName = this.getOwnerComponent().getModel("global").getProperty("/Movie").name;
 			mName = mName.toUpperCase();
 			var res = mName.split("");
 			var failedAttempt = true;
@@ -126,9 +142,10 @@ sap.ui.define([
 			}
 			if (failedAttempt) {
 				button.addStyleClass("mainPageWrongCharButton");
-				var attempts = this.getView().getModel().getData();
+				var failedAttempts = this.getOwnerComponent().getModel("global").getProperty("/failedAttempts");
+				var usedCharacters = this.getOwnerComponent().getModel("global").getProperty("/usedCharacters");
 				var sRootPath = jQuery.sap.getModulePath("ShallYou.images");
-				var indexOxUsed = attempts.usedCharacters.indexOf(char);
+				var indexOxUsed = usedCharacters.indexOf(char);
 				if (indexOxUsed < 0) {
 
 					/*if (attempts.failedAttempts === 0) {
@@ -160,65 +177,81 @@ sap.ui.define([
 						this.getView().byId("di").setValue(char);
 					}*/
 
-					if (attempts.failedAttempts === 0) {
+					if (failedAttempts === 0) {
 						var control = this.getView().byId("i1");
 						var src = sRootPath + "/B_.png";
-					} else if (attempts.failedAttempts === 1) {
+					} else if (failedAttempts === 1) {
 						var control = this.getView().byId("i2");
 						var src = sRootPath + "/O_.png";
-					} else if (attempts.failedAttempts === 2) {
+					} else if (failedAttempts === 2) {
 						var control = this.getView().byId("i3");
 						var src = sRootPath + "/L_.png";
-					} else if (attempts.failedAttempts === 3) {
+					} else if (failedAttempts === 3) {
 						var control = this.getView().byId("i4");
 						var src = sRootPath + "/L_.png";
-					} else if (attempts.failedAttempts === 4) {
+					} else if (failedAttempts === 4) {
 						var control = this.getView().byId("i5");
 						var src = sRootPath + "/Y_.png";
-					} else if (attempts.failedAttempts === 5) {
+					} else if (failedAttempts === 5) {
 						var control = this.getView().byId("i6");
 						var src = sRootPath + "/W_.png";
-					} else if (attempts.failedAttempts === 6) {
+					} else if (failedAttempts === 6) {
 						var control = this.getView().byId("i7");
 						var src = sRootPath + "/O_.png";
-					} else if (attempts.failedAttempts === 7) {
+					} else if (failedAttempts === 7) {
 						var control = this.getView().byId("i8");
 						var src = sRootPath + "/O_.png";
-					} else if (attempts.failedAttempts === 8) {
+					} else if (failedAttempts === 8) {
 						var control = this.getView().byId("i9");
 						var src = sRootPath + "/D_.png";
+
+						sap.m.MessageToast.show("You Failed! Try another one.");
 					}
 
-					this.indicateAttempt(control, src, char);
+					this.indicateFailedAttempt(control, src, char);
 
-					attempts.failedAttempts++;
-					attempts.usedCharacters = char.concat(attempts.usedCharacters);
+					failedAttempts++;
+					usedCharacters = char.concat(usedCharacters);
+
+					this.getOwnerComponent().getModel("global").setProperty("/failedAttempts", failedAttempts);
+					this.getOwnerComponent().getModel("global").setProperty("/usedCharacters", usedCharacters);
 				}
 			}
 		},
 
-		startTimer: function() {
+		startTimer: function () {
 			$(".timerContainer").TimeCircles().start();
-			/*$(".timerContainer").animate({height: 'toggle'}, "fast");
-			$(".timerContainer").animate({height: 'toggle'}, "fast");*/
+			$(".timerContainer").animate({height: 'toggle'}, "fast");
+			$(".timerContainer").animate({height: 'toggle'}, "fast");
 
 		},
 
-		onTimerChange: function(unit, value, total) {
+		onTimerChange: function (unit, value, total) {
 			//console.log(unit, value, total);
 			if (value === 0) {
 				sap.m.MessageToast.show("Times's Up!");
 			}
 		},
 
-		indicateAttempt: function(control, src, char) {
+		indicateFailedAttempt: function (control, src, char) {
 
-			$('#' + control.getId()).fadeOut(500, function() {
+			$('#' + control.getId()).fadeOut(500, function () {
 				control.setSrc(src);
 				control.setLabel(char);
 				$('#' + control.getId()).fadeIn(500);
 			});
-		}
+		},
+
+		createGameStartAnimation: function () {
+			var controlIds = ["i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8", "i9"];
+			for (var i = 0; i < controlIds.length; i++) {
+				var control = this.byId(controlIds[i]);
+				$('#' + control.getId()).fadeOut(500, function () {
+					$('#' + control.getId()).fadeIn(500);
+				});
+			}
+
+		},
 
 	});
 });

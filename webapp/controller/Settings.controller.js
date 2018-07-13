@@ -38,7 +38,11 @@ sap.ui.define([
 		 */
 		//	onExit: function() {
 		//
-		//	}
+		//	},
+		
+		onPressChangeJourney:function(){
+			this.getRouter().navTo("journey");
+		}
 
 	});
 

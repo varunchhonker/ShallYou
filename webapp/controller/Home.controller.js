@@ -10,24 +10,35 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf ShallYou.view.InitialView
 		 */
-		onInit: function() {
 
+		onInit: function() {
+			serviceObject.read("getUserProfile?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1", "", this.getUserProfileCallback, this);
+		},
+
+		getUserProfileCallback: function(data, response) {
+			if (response) {
+				this.getOwnerComponent().getModel("global").setProperty("/Journey", data.journey);
+				this.getOwnerComponent().getModel("global").setProperty("/Coins", data.coinsLeft);
+				this.getOwnerComponent().getModel("global").setProperty("/Levels", data.level);
+				if(data.journey){
+					this.getOwnerComponent().getModel("global").setProperty("/firstTime", false);
+				}
+			}
 		},
 
 		onAfterRendering: function() {
-			
+
 		},
 
 		onPressPlay: function(oEvent) {
-			var firstTime=this.getOwnerComponent().getModel("global").getProperty("/firstTime");
+			var firstTime = this.getOwnerComponent().getModel("global").getProperty("/firstTime");
 			if (firstTime) {
 				this.getRouter().navTo("journey");
-			}else{
+			} else {
 				this.getRouter().navTo("levels");
 			}
 		},
 
-		
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).
