@@ -5,8 +5,6 @@ sap.ui.define([
 ], function(Controller, History, JSONModel) {
 	"use strict";
 
-	var validFlag = true;
-
 	return Controller.extend("ShallYou.controller.BaseController", {
 		/**
 		 * Convenience method for accessing the router in every controller of the application.
@@ -84,7 +82,12 @@ sap.ui.define([
 		onPressSettings: function(oEvent) {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("settings");
-		}
+		},
+		
+		onPressLevels:function(oEvent) {
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("levels");
+		},
 	});
 
 });

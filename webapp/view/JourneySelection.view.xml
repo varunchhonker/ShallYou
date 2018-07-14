@@ -22,8 +22,8 @@
 			<HBox justifyContent="Center">
 				<RadioButtonGroup id="journeyRBG" selectedIndex="-1" valueState="Warning" select="onJourneySelection">
 					<buttons>
-						<RadioButton id="Bollywood" text="Bollywood" class="journeyPageRadioButtons"/>
-						<RadioButton id="Hollywood" text="Hollywood" class="journeyPageRadioButtons"/>
+						<RadioButton id="BollyWood" text="BollyWood" class="journeyPageRadioButtons"/>
+						<RadioButton id="HollyWood" text="HollyWood" class="journeyPageRadioButtons"/>
 						<RadioButton id="Mix" text="Mix" class="journeyPageRadioButtons"/>
 					</buttons>
 				</RadioButtonGroup>

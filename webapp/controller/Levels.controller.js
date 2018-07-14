@@ -16,24 +16,6 @@ sap.ui.define([
 
 		onRouteMatched: function() {
 			this.byId("levelList").removeSelections(true);
-			//serviceObject.read("onGetUnlockedLevel?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1", "", this.getLevelsCallback, this);
-		},
-
-		getLevelsCallback: function(data, response) {
-			if (response) {
-				var levelIds = Object.keys(data).sort();
-				var levels = [];
-				for (var i = 0; i < levelIds.length; i++) {
-					levels.push({
-						"levelId": levelIds[i],
-						"levelName": levelIds[i],
-						"unlocked": data[levelIds[i]],
-						"levelProgress": 0
-					});
-				}
-
-				this.getView().getModel().setData(levels);
-			}
 		},
 
 		onSelectLevel: function(oEvent) {
@@ -43,7 +25,7 @@ sap.ui.define([
 			if (!levelObject.locked) {
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 				oRouter.navTo("mainpage", {
-					levelId: levelObject.levelId
+					levelId: levelObject.id
 				});
 			} else {
 				var icon = oEvent.getParameters().listItem.getAggregation("content")[0].getAggregation("items")[0].getAggregation("items")[0];
@@ -55,10 +37,10 @@ sap.ui.define([
 			}
 
 			/*Hardcoding for testing*/
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			/*var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("mainpage", {
 				levelId: "Level1"
-			});
+			});*/
 			/*`````````````*/
 
 		}

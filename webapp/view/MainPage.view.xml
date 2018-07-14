@@ -18,9 +18,11 @@
 						<Button text="Start" press="startTimer"/>
 						<HBox id="timerContainer" class="timerContainer" width="3rem">
 							<customData>
-								<core:CustomData writeToDom="true" key="timer" value="6"/>
+								<core:CustomData writeToDom="true" key="timer" value="10"/>
 							</customData>
 						</HBox>
+						<Button text="Pause" press="pauseTimer"/>
+						<Button text="Restart" press="restartTimer"/>
 					</HBox>
 				</contentRight>
 			</Bar>
@@ -72,10 +74,14 @@
 						</FlexBox>
 					</pages>
 				</Carousel>
-				<l:Grid id="gridLayout" defaultSpan="L1 M1 S2" class="paddingGrid">
+				<l:Grid id="gridLayout" defaultSpan="L2 M2 S2" class="paddingGrid">
 					<l:content></l:content>
 				</l:Grid>
 			</VBox>
+			<!--<VBox>
+				<core:HTML
+					content="&lt;audio id='buttonSounds' src='sounds/button-09.mp3' controls&gt;&lt;p&gt;If you are reading this, it is because your browser does not support the audio element.&lt;/p&gt;&lt;/audio&gt;"></core:HTML>
+			</VBox>-->
 			<FlexBox direction="Column" justifyContent="Center" alignContent="Center" alignItems="Center" class="mainPageKeyboardVBox" width="100%">
 				<HBox justifyContent="Center" alignContent="Center" alignItems="Center">
 					<Button id="ab" press="onPressChar" text="A"/>
@@ -108,7 +114,7 @@
 					<Button id="xb" press="onPressChar" text="X"/>
 					<Button id="yb" press="onPressChar" text="Y"/>
 					<Button id="zb" press="onPressChar" text="Z"/>
-					<Button id="numb" press="onPressNum" text="0-9"/>
+					<Button id="_b" press="onPressChar" text="0-9"/>
 				</HBox>
 			</FlexBox>
 		</content>

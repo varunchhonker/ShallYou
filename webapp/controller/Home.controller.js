@@ -12,7 +12,7 @@ sap.ui.define([
 		 */
 
 		onInit: function() {
-			serviceObject.read("getUserProfile?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1", "", this.getUserProfileCallback, this);
+			serviceObject.read("getUserProfile?userId=IdjJ4KZIdTYeGI2yKcOx4BFgODi2", "", this.getUserProfileCallback, this);
 		},
 
 		getUserProfileCallback: function(data, response) {

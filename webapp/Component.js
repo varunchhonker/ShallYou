@@ -29,8 +29,11 @@ sap.ui.define([
 				modulePath: jQuery.sap.getModulePath("ShallYou"),
 				firstTime: true,
 				failedAttempts: 0,
+				passedAttempts: 0,
 				possibleAttempts: 9,
-				usedCharacters: ""
+				usedCharacters: "",
+				Movie:""
+				
 			}).setDefaultBindingMode("OneWay"), "global");
 			// set the device model
 			//	var sRootPath =jQuery.sap.getModulePath("ShallYou.images");

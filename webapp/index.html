@@ -52,20 +52,46 @@
 			
 			//~~~~~~~~~~To Preload all the image files at app launch for faster response at runtime, but didnt work~~~~//
 			
-			/*$(window).load(function(){
-				$.fn.preload = function() {
-				    this.each(function(){
-				        $('<img />').attr('src',this).appendTo('body').css('display','none');
-				    });
-				}
-			// Usage:
-			$(['images/B.png', ]).preload();
-			});*/
-			
+			/*window.onload = function() {
+				setTimeout(function() {
+					// XHR to request a JS and a CSS
+					var xhr = new XMLHttpRequest();
+					xhr.open('GET', 'http://domain.tld/preload.js');
+					xhr.send('');
+					xhr = new XMLHttpRequest();
+					xhr.open('GET', 'http://domain.tld/preload.css');
+					xhr.send('');
+					// preload image
+					
+					new Image().src = "images/fb.png";
+					new Image().src = "images/gplus.png";
+					new Image().src = "images/logo.png";
+					new Image().src = "images/used.png";
+					
+					new Image().src = "images/B.png";
+					new Image().src = "images/B_.png";
+					new Image().src = "images/D.png";
+					new Image().src = "images/D_.png";
+					new Image().src = "images/H.png";
+					new Image().src = "images/H_.png";
+					new Image().src = "images/L.png";
+					new Image().src = "images/L_.png";
+					new Image().src = "images/O.png";
+					new Image().src = "images/O_.png";
+					new Image().src = "images/W.png";
+					new Image().src = "images/W_.png";
+					new Image().src = "images/Y.png";
+					new Image().src = "images/Y_.png";
+				}, 1000);
+			};*/
 		</script>
 	</head>
 
 	<body class="sapUiBody" id="content">
+		<div id="busyIndicator"
+		style="text-align: center; width: 270px; height: 150px; position: absolute; left: 50%; top: 50%; margin: -75px 0 0 -135px;">
+		<img src="images/Loaders/loading10.gif" />
+	</div>
 	</body>
 
 </html>
