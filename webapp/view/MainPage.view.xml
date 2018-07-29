@@ -1,6 +1,6 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	controllerName="ShallYou.controller.MainPage" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="ShallYou.js">
-	<Page title="{i18n>title}" class="levelsPage" enableScrolling="false">
+	<Page title="{i18n>title}" class="mainPage" enableScrolling="false">
 		<customHeader>
 			<Bar class="pageHeader">
 				<contentLeft>
@@ -9,20 +9,20 @@
 				<contentMiddle>
 					<HBox>
 						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
-						<Label text="{global>/Coins}" design="Bold"/>
+						<Label text="{global>/Coins}" design="Bold" class="pageHeaderCoinsLabel"/>
 					</HBox>
 				</contentMiddle>
 				<contentRight>
 					<!--<core:Icon src="sap-icon://action-settings" class="pageHeaderIcons" press="onPressSettings"/>-->
 					<HBox>
-						<Button text="Start" press="startTimer"/>
+						<!--<Button text="Start" press="startTimer"/>-->
 						<HBox id="timerContainer" class="timerContainer" width="3rem">
 							<customData>
 								<core:CustomData writeToDom="true" key="timer" value="10"/>
 							</customData>
 						</HBox>
-						<Button text="Pause" press="pauseTimer"/>
-						<Button text="Restart" press="restartTimer"/>
+						<!--<Button text="Pause" press="pauseTimer"/>
+						<Button text="Restart" press="restartTimer"/>-->
 					</HBox>
 				</contentRight>
 			</Bar>
@@ -64,13 +64,13 @@
 				</HBox>
 			</VBox>
 			<VBox class="mainPagePuzzleVBox" justifyContent="Center" alignContent="Center" alignItems="Center">
-				<Carousel class="sapUiContentPadding" arrowsPlacement="Content" loop="false" showPageIndicator="false" pageIndicatorPlacement="Top">
+				<Carousel class="sapUiContentPadding mainPageHintCarousel" arrowsPlacement="Content" loop="false" showPageIndicator="false" pageIndicatorPlacement="Top">
 					<pages>
 						<FlexBox justifyContent="Center">
-							<Text id="hintText1" class="hintText" textAlign="Center"></Text>
+							<Text id="hintText1" class="mainPageHintText" textAlign="Center"></Text>
 						</FlexBox>
 						<FlexBox justifyContent="Center">
-							<Text id="hintText2" class="hintText" textAlign="Center"></Text>
+							<Text id="hintText2" class="mainPageHintText" textAlign="Center"></Text>
 						</FlexBox>
 					</pages>
 				</Carousel>
@@ -84,37 +84,37 @@
 			</VBox>-->
 			<FlexBox direction="Column" justifyContent="Center" alignContent="Center" alignItems="Center" class="mainPageKeyboardVBox" width="100%">
 				<HBox justifyContent="Center" alignContent="Center" alignItems="Center">
-					<Button id="ab" press="onPressChar" text="A"/>
-					<Button id="bb" press="onPressChar" text="B"/>
-					<Button id="cb" press="onPressChar" text="C"/>
-					<Button id="db" press="onPressChar" text="D"/>
-					<Button id="eb" press="onPressChar" text="E"/>
-					<Button id="fb" press="onPressChar" text="F"/>
-					<Button id="gb" press="onPressChar" text="G"/>
-					<Button id="hb" press="onPressChar" text="H"/>
-					<Button id="ib" press="onPressChar" text="I"/>
+					<Button id="ab" press="onPressChar" text="A" class="mainPageKeyboardButtons"/>
+					<Button id="bb" press="onPressChar" text="B" class="mainPageKeyboardButtons"/>
+					<Button id="cb" press="onPressChar" text="C" class="mainPageKeyboardButtons"/>
+					<Button id="db" press="onPressChar" text="D" class="mainPageKeyboardButtons"/>
+					<Button id="eb" press="onPressChar" text="E" class="mainPageKeyboardButtons"/>
+					<Button id="fb" press="onPressChar" text="F" class="mainPageKeyboardButtons"/>
+					<Button id="gb" press="onPressChar" text="G" class="mainPageKeyboardButtons"/>
+					<Button id="hb" press="onPressChar" text="H" class="mainPageKeyboardButtons"/>
+					<Button id="ib" press="onPressChar" text="I" class="mainPageKeyboardButtons"/>
 				</HBox>
 				<HBox justifyContent="Center" alignContent="Center" alignItems="Center">
-					<Button id="jb" press="onPressChar" text="J"/>
-					<Button id="kb" press="onPressChar" text="K"/>
-					<Button id="lb" press="onPressChar" text="L"/>
-					<Button id="mb" press="onPressChar" text="M"/>
-					<Button id="nb" press="onPressChar" text="N"/>
-					<Button id="ob" press="onPressChar" text="O"/>
-					<Button id="pb" press="onPressChar" text="P"/>
-					<Button id="qb" press="onPressChar" text="Q"/>
-					<Button id="rb" press="onPressChar" text="R"/>
+					<Button id="jb" press="onPressChar" text="J" class="mainPageKeyboardButtons"/>
+					<Button id="kb" press="onPressChar" text="K" class="mainPageKeyboardButtons"/>
+					<Button id="lb" press="onPressChar" text="L" class="mainPageKeyboardButtons"/>
+					<Button id="mb" press="onPressChar" text="M" class="mainPageKeyboardButtons"/>
+					<Button id="nb" press="onPressChar" text="N" class="mainPageKeyboardButtons"/>
+					<Button id="ob" press="onPressChar" text="O" class="mainPageKeyboardButtons"/>
+					<Button id="pb" press="onPressChar" text="P" class="mainPageKeyboardButtons"/>
+					<Button id="qb" press="onPressChar" text="Q" class="mainPageKeyboardButtons"/>
+					<Button id="rb" press="onPressChar" text="R" class="mainPageKeyboardButtons"/>
 				</HBox>
 				<HBox justifyContent="Center" alignContent="Center" alignItems="Center">
-					<Button id="sb" press="onPressChar" text="S"/>
-					<Button id="tb" press="onPressChar" text="T"/>
-					<Button id="ub" press="onPressChar" text="U"/>
-					<Button id="vb" press="onPressChar" text="V"/>
-					<Button id="wb" press="onPressChar" text="W"/>
-					<Button id="xb" press="onPressChar" text="X"/>
-					<Button id="yb" press="onPressChar" text="Y"/>
-					<Button id="zb" press="onPressChar" text="Z"/>
-					<Button id="_b" press="onPressChar" text="0-9"/>
+					<Button id="sb" press="onPressChar" text="S" class="mainPageKeyboardButtons"/>
+					<Button id="tb" press="onPressChar" text="T" class="mainPageKeyboardButtons"/>
+					<Button id="ub" press="onPressChar" text="U" class="mainPageKeyboardButtons"/>
+					<Button id="vb" press="onPressChar" text="V" class="mainPageKeyboardButtons"/>
+					<Button id="wb" press="onPressChar" text="W" class="mainPageKeyboardButtons"/>
+					<Button id="xb" press="onPressChar" text="X" class="mainPageKeyboardButtons"/>
+					<Button id="yb" press="onPressChar" text="Y" class="mainPageKeyboardButtons"/>
+					<Button id="zb" press="onPressChar" text="Z" class="mainPageKeyboardButtons"/>
+					<Button id="_b" press="onPressChar" text="0-9" class="mainPageKeyboardButtons"/>
 				</HBox>
 			</FlexBox>
 		</content>

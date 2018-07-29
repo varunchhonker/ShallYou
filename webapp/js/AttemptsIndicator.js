@@ -60,7 +60,7 @@ sap.ui.define([
 				textAlign: "Center",
 				design: "Bold",
 				text: ""
-			}));
+			}).addStyleClass("customControlLabel"));
 		},
 
 		setState: function(iValue) {

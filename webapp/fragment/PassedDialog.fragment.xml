@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
-	<Dialog showHeader="true" title="You Passed!" draggable="false" escapeHandler="passedDialogEscapeHandler">
+	<Dialog showHeader="true" title="You Passed!" draggable="false" escapeHandler="passedDialogEscapeHandler" class="passedDialog">
 		<subHeader>
 			<Bar>
 				<contentMiddle>
@@ -10,10 +10,10 @@
 		<l:Grid defaultSpan="L12 M12 S12">
 			<l:content>
 				<HBox justifyContent="Center">
-					<Button text="Play Next Movie" icon="sap-icon://lead" iconFirst="false" press="proceedToNextMovie" class="homePageCenterButtons"/>
+					<Button text="Play Next Movie" icon="sap-icon://lead" iconFirst="false" press="proceedToNextMovie" class="homePageCenterButtons menuButtons"/>
 				</HBox>
 				<HBox justifyContent="Center">
-					<Button text="Go To Levels" iconFirst="false" press="onPressLevels" class="homePageCenterButtons"/>
+					<Button text="Go To Levels" iconFirst="false" press="onPressLevels" class="homePageCenterButtons menuButtons"/>
 				</HBox>
 			</l:content>
 		</l:Grid>

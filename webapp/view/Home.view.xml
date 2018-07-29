@@ -9,7 +9,7 @@
 				<contentMiddle>
 					<HBox>
 						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
-						<Label text="{global>/Coins}" design="Bold"/>
+						<Label text="{global>/Coins}" design="Bold" class="pageHeaderCoinsLabel"/>
 					</HBox>
 				</contentMiddle>
 				<contentRight>
@@ -28,19 +28,30 @@
 		<content>
 			<l:Grid id="gridHeader" defaultSpan="L12 M12 S12">
 				<l:content>
-					<Image id="logo" src="{global>/modulePath}/images/logo.png" densityAware="true" height="100%" width="100%" visible="false">
+					<!--<Image id="logo" src="{global>/modulePath}/images/logo.png" densityAware="true" height="100%" width="100%" visible="true">
 						<layoutData>
 							<FlexItemData growFactor="1"/>
 						</layoutData>
-					</Image>
+					</Image>-->
+					<VBox justifyContent="Center" class="homePageLogoVBox">
+						<HBox justifyContent="Center">
+							<Text text="GuEsS" class="homePageLogoText"/>
+						</HBox>
+						<HBox justifyContent="Center">
+							<Text text="tHe" class="homePageLogoText"/>
+						</HBox>
+						<HBox justifyContent="Center">
+							<Text text="MoViE" class="homePageLogoText"/>
+						</HBox>
+					</VBox>
 					<HBox justifyContent="Center">
-						<Button icon="sap-icon://media-play" text="Play" press="onPressPlay" class="homePageCenterButtons"></Button>
+						<Button icon="sap-icon://media-play" text="Play" press="onPressPlay" class="homePageCenterButtons menuButtons"></Button>
 					</HBox>
 					<HBox justifyContent="Center">
-						<Button icon="sap-icon://competitor" text="Achievements" press="onPressAchievements" class="homePageCenterButtons"></Button>
+						<Button icon="sap-icon://competitor" text="Achievements" press="onPressAchievements" class="homePageCenterButtons menuButtons"></Button>
 					</HBox>
 					<HBox justifyContent="Center">
-						<Button icon="sap-icon://contacts" text="Rules" press="onPressRules" class="homePageCenterButtons"></Button>
+						<Button icon="sap-icon://contacts" text="Rules" press="onPressRules" class="homePageCenterButtons menuButtons"></Button>
 					</HBox>
 					<HBox justifyContent="Center">
 						<HBox justifyContent="Center" class="homePageBottomButtonsHBox">

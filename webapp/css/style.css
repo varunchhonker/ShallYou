@@ -35,12 +35,6 @@
     height: 2.5rem;
 }*/
 
-.hintText {
-    text-align: center;
-    color: seagreen;
-    font-size: larger;
-}
-
 
 /*.customClass .sapMInputDivWrapper {
     height: 2rem;
@@ -70,10 +64,37 @@
 
 .pageHeaderIcons {
     font-size: 2.6rem !important;
+    vertical-align: middle;
+}
+
+.pageHeaderCoinsLabel {
+    margin-left: 5px;
+    font-size: 1.6rem;
+    font-family: sans-serif;
+    vertical-align: middle;
+}
+
+.menuButtons .sapMBtnContent{
+    font-size: 1.4rem;
+    font-family: sans-serif;
+    font-weight: 600;
 }
 
 
 /*~~~~Home Page~~~~~~~~*/
+
+.homePageLogoVBox {
+    margin: 3rem 0rem;
+}
+
+.homePageLogoText {
+    color: #fafafa;
+    font-size: -webkit-xxx-large;
+    font-family: cursive;
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 6px 6px #333333;
+}
 
 .homePageBottomButtonsHBox {
     position: absolute;
@@ -93,7 +114,8 @@
 }
 
 .homePage>section {
-    background-color: #ec407a !important;
+    /*background-color: #ec407a !important;*/
+    background-image: url(../images/Backgrounds/homePage.jpg);
 }
 
 
@@ -138,7 +160,8 @@
 /*~~~Levels Page~~~~*/
 
 .levelsPage>section {
-    background-color: #bbdefb !important;
+    /*background-color: #bbdefb !important;*/
+    background-image: url(../images/Backgrounds/levelsPage.jpg);
 }
 
 .levelsPageSubheaderBar {
@@ -160,6 +183,7 @@
     margin: 0.4rem 0rem !important;
     border-radius: 17px;
     height: 7rem;
+    border: 2px solid cornflowerblue;
     /* background-image: url(../images/Backgrounds/images2.jpg);*/
 }
 
@@ -198,8 +222,24 @@
 
 /*Main Page*/
 
+.mainPage>section {
+    /*background-color: #bbdefb !important;*/
+    background-image: url(../images/Backgrounds/mainPage.jpeg);
+}
+
 .mainPageAttemptsVBox {
     margin-top: 1rem;
+}
+
+.mainPageHintCarousel {
+    margin: 1rem 0rem;
+}
+
+.mainPageHintText {
+    text-align: center;
+    color: skyblue;
+    font-size: larger;
+    font-family: monospace;
 }
 
 .mainPagePuzzleVBox {}
@@ -207,6 +247,15 @@
 .mainPageKeyboardVBox {
     position: absolute;
     bottom: 2rem;
+    width: 100%;
+    padding: 5px;
+    /*border-bottom: 4px dashed #2f3c48;
+    border-top: 4px dashed #2f3c48;
+    background-color: white;*/
+}
+
+.mainPageRightCharButton {
+    opacity: 1;
 }
 
 .mainPageRightCharButton .sapMBtnInner {
@@ -214,22 +263,44 @@
     background: green;
 }
 
-.mainPageRightCharButton .sapMBtnDisabled {
-    opacity: 0.8;
+.mainPageWrongCharButton {
+    opacity: 1;
 }
 
 .mainPageWrongCharButton .sapMBtnInner {
+    opacity: 1;
     color: #fafafa;
     background: red;
-}
-
-.mainPageWrongCharButton .sapMBtnDisabled {
-    opacity: 0.8;
 }
 
 .mainPageMovieAlphabetInput .sapMInputBaseInner {
     padding: 0px !important;
     text-align: center !important;
+    background-color: #333333;
+    color: white;
+    font-size: x-large;
+    border: 4px white solid;
+    font-family: cursive;
+}
+
+.mainPageMovieFirstAlphabetInput .sapMInputBaseInner{
+	border: 4px white dotted;
+}
+
+.mainPageEmptyInput {
+    opacity: 0;
+}
+
+.mainPageKeyboardButtons {
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+.mainPageKeyboardButtons .sapMBtnInner {
+    color: black;
+    font-size: x-large;
+    font-family: sans-serif;
+    border-radius: 10px !important;
 }
 
 .customControlWrapperDiv > * {
@@ -239,6 +310,19 @@
 .customControlImage {
     height: 3.5rem;
     transition: all 1s;
+}
+
+.customControlLabel {
+    color: white;
+    font-family: serif;
+}
+
+.failedDialog {
+    border-radius: 20px !important;
+}
+
+.passedDialog {
+    border-radius: 20px !important;
 }
 
 

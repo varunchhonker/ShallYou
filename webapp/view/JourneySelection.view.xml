@@ -9,7 +9,7 @@
 				<contentMiddle>
 					<HBox>
 						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
-						<Label text="{global>/Coins}" design="Bold"/>
+						<Label text="{global>/Coins}" design="Bold" class="pageHeaderCoinsLabel"/>
 					</HBox>
 				</contentMiddle>
 				<contentRight>

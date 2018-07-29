@@ -1,12 +1,13 @@
 sap.ui.define([
-	"ShallYou/controller/BaseController"
+	"ShallYou/controller/BaseController",
+	"sap/ui/core/routing/History"
 
-], function (BaseController) {
+], function (BaseController, History) {
 	"use strict";
 	var oController = "";
 	var time = "";
 	var FailedDialog = "";
-	var PassedDialog="";
+	var PassedDialog = "";
 
 	return BaseController.extend("ShallYou.controller.MainPage", {
 
@@ -35,51 +36,80 @@ sap.ui.define([
 
 		},
 
+		onNavBack: function () {
+			var sPreviousHash = History.getInstance().getPreviousHash();
+
+			if (sPreviousHash !== undefined && !sPreviousHash.toLowerCase().includes("journey")) {
+				// The history contains a previous entry
+				history.go(-1);
+			} else {
+				// Otherwise we go backwards with a forward history
+				var bReplace = true;
+				this.getRouter().navTo("home", {}, bReplace);
+			}
+
+			this.pauseTimer();
+		},
+
 		onRouteMatched: function (oEvent) {
 
 			var levelId = oEvent.getParameter("arguments").levelId;
-			var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad"
+			var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad";
 			serviceObject.read(url, levelId, this.onSkipCallback, this);
+			this.resetView();
+		},
 
-			/*testing*/
-			//this.onSkipCallback("", true, levelId);
-			/*`````````*/
+		resetView: function () {
 			var gridControl = this.getView().byId("gridLayout");
 			gridControl.destroyContent();
+			this.getOwnerComponent().getModel("global").setProperty("/passedAttempts", 0);
+			this.getOwnerComponent().getModel("global").setProperty("/failedAttempts", 0);
+			this.getOwnerComponent().getModel("global").setProperty("/usedCharacters", "");
+			this.resetKeyboardState();
+			this.resetFailedAttemptIndicator();
 		},
 
 		onSkipCallback: function (data, response, levelId) {
-			if (response) {
+			/*if (response) {
 				var url = "getNextMovies?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=" + levelId;
 				serviceObject.read(url, "", this.getNextMovieCallback, this);
-			}
-		},
-
-		getNextMovieCallback: function (data, response) {
+			}*/
+			//data.name = "Rudraksh";
+			//data.name="Kabhi khusshi kabhi gham";
+			//data.name="Saajan ki aayegi baraat";
+			//data.name="dil ka rishta bada hi pyaara hai";
 			if (response) {
 				this.getOwnerComponent().getModel("global").setProperty("/Movie", data);
 				this.initializeView(data);
 			}
 		},
 
+		/*getNextMovieCallback: function (data, response) {
+			if (response) {
+				this.getOwnerComponent().getModel("global").setProperty("/Movie", data);
+				this.initializeView(data);
+			}
+		},*/
+
 		initializeView: function (data) {
 
-			time = 10;
-			this.getOwnerComponent().getModel("global").setProperty("/passedAttempts", 0);
-			this.getOwnerComponent().getModel("global").setProperty("/failedAttempts", 0);
-			this.getOwnerComponent().getModel("global").setProperty("/usedCharacters", "");
-			this.setHints(data);
-			this.createInputFields(data);
-			this.resetKeyboardState();
-			this.initializeTimer(10, "#90FF33");
-			this.startTimer();
+			time = 60;
+			this.initializeTimer(time, "#90FF33");
+
+			if (typeof data === "object") {
+				this.setHints(data);
+				this.createInputFields(data);
+				this.startTimer();
+			} else {
+				sap.m.MessageToast.show(data);
+			}
+
 			//this.createGameStartAnimation();
 
 		},
 
 		createInputFields: function (data) {
 			var mName = data.name;
-			//mName = "Kabhi khushi kabhi gham";
 			var mLength = mName.length;
 			var mNameArray = mName.split(" ");
 
@@ -96,42 +126,39 @@ sap.ui.define([
 			}*/
 
 			var j = 0;
+			var gridColumns = 6;
+			var leftSpaces = 6;
 			for (var i = 0; i < mNameArray.length; i++) {
-				if(i === 50){
-					break;
-				}
-				var leftSpaces = 6 - gridControl.getContent().length % 6;
-				//what if word is more than 6 chars
-				
-				if ((i === 0 && leftSpaces < mNameArray[i].length) || (i > 0 && leftSpaces < mNameArray[i].length + 1)) {
-					for (var k = 0; k < leftSpaces; k++) {
-						/*gridControl.addContent(new sap.m.Text({
-							text: " empty "
-						}));*/
-						var inputField = new sap.m.Input({
-							value: "Empty"
-						});
-						inputField.setEnabled(false);
-						gridControl.addContent(inputField);
-					}
-					i--;
-				} else {
-					if (i > 0 && leftSpaces < 6) {
-						//gridControl.addContent(new sap.m.Text());
-						var inputField = new sap.m.Input({
-							value: "Empty"
-						});
-						inputField.setEnabled(false);
-						gridControl.addContent(inputField);
-					}
 
-					for (var l = 0; l < mNameArray[i].length; l++) {
-						var inputField = new sap.m.Input(this.createId("Input" + j)).addStyleClass("mainPageMovieAlphabetInput");
+				if (i > 0 && ((mNameArray[i].length <= 6 && mNameArray[i].length > leftSpaces) || (mNameArray[i].length > 6 && leftSpaces < 6))) {
+					for (var k = 0; k < leftSpaces; k++) {
+						var inputField = new sap.m.Input({
+							value: "Empty"
+						}).addStyleClass("mainPageEmptyInput");
 						inputField.setEnabled(false);
 						gridControl.addContent(inputField);
-						j++;
 					}
 				}
+				for (var l = 0; l < mNameArray[i].length; l++) {
+					var inputField = new sap.m.Input(this.createId("Input" + j)).addStyleClass("mainPageMovieAlphabetInput");
+					inputField.setEnabled(false);
+					if (l === 0) {
+						inputField.addStyleClass("mainPageMovieFirstAlphabetInput");
+					}
+					gridControl.addContent(inputField);
+					j++;
+				}
+
+				leftSpaces = 6 - gridControl.getContent().length % 6;
+				if (i < mNameArray.length - 1 && leftSpaces > 0 && leftSpaces < 6) {
+					var inputField = new sap.m.Input({
+						value: "Empty"
+					}).addStyleClass("mainPageEmptyInput");
+					inputField.setEnabled(false);
+					gridControl.addContent(inputField);
+					leftSpaces = 6 - gridControl.getContent().length % 6;
+				}
+
 			}
 		},
 
@@ -151,6 +178,33 @@ sap.ui.define([
 				button.removeStyleClass("mainPageRightCharButton");
 				button.removeStyleClass("mainPageWrongCharButton");
 			}
+		},
+
+		resetFailedAttemptIndicator: function () {
+			var sRootPath = jQuery.sap.getModulePath("ShallYou.images");
+			if (this.getOwnerComponent().getModel("global").getProperty("/Journey") === "Hollywood") {
+				this.byId("i1").setSrc(sRootPath + "/H.png");
+				this.byId("i1").setLabel("");
+			} else {
+				this.byId("i1").setSrc(sRootPath + "/B.png");
+				this.byId("i1").setLabel("");
+			}
+			this.byId("i2").setSrc(sRootPath + "/O.png");
+			this.byId("i2").setLabel("");
+			this.byId("i3").setSrc(sRootPath + "/L.png");
+			this.byId("i3").setLabel("");
+			this.byId("i4").setSrc(sRootPath + "/L.png");
+			this.byId("i4").setLabel("");
+			this.byId("i5").setSrc(sRootPath + "/Y.png");
+			this.byId("i5").setLabel("");
+			this.byId("i6").setSrc(sRootPath + "/W.png");
+			this.byId("i6").setLabel("");
+			this.byId("i7").setSrc(sRootPath + "/O.png");
+			this.byId("i7").setLabel("");
+			this.byId("i8").setSrc(sRootPath + "/O.png");
+			this.byId("i8").setLabel("");
+			this.byId("i9").setSrc(sRootPath + "/D.png");
+			this.byId("i9").setLabel("");
 		},
 
 		initializeTimer: function (time, color) {
@@ -239,7 +293,7 @@ sap.ui.define([
 
 			/*var url = "checkChar?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=Level1&chkChar=" + char;
 			serviceObject.readWithoutCallback(url, "");*/
-			
+
 			var failedAttempts = this.getOwnerComponent().getModel("global").getProperty("/failedAttempts");
 
 			var mName = this.getOwnerComponent().getModel("global").getProperty("/Movie").name;
@@ -290,8 +344,6 @@ sap.ui.define([
 					} else if (failedAttempts === 8) {
 						var control = this.getView().byId("i9");
 						var src = sRootPath + "/D_.png";
-
-						sap.m.MessageToast.show("You Failed! Try another one.");
 					}
 
 					this.indicateFailedAttempt(control, src, char);
@@ -311,13 +363,19 @@ sap.ui.define([
 			} else {
 				var passedAttempts = this.getOwnerComponent().getModel("global").getProperty("/passedAttempts");
 				passedAttempts++;
-				var uniqueChars=res.filter(function(item, i, ar){ return ar.indexOf(item) === i; }).join('');
-				var numbers=uniqueChars.match(/[0-9]+/g).length;
-				var subtractor=numbers > 1 ? 1 : 0;
+				var uniqueChars = res.filter(function (item, i, ar) {
+					return ar.indexOf(item) === i;
+				}).join('');
+				var numbers = 0;
+				if (uniqueChars.match(/[0-9]+/g)) {
+					numbers = uniqueChars.match(/[0-9]+/g).length;
+				}
+				var subtractor = numbers > 1 ? 1 : 0;
 				if (passedAttempts === uniqueChars.length - subtractor) {
-					var score = Math.ceil(((uniqueChars.length - subtractor)/(passedAttempts + failedAttempts))*100);
+					var score = Math.ceil(((uniqueChars.length - subtractor) / (passedAttempts + failedAttempts)) * 100);
 					this.byId("passedDialogScoreText").setText("Your Passing Score: " + score + "%");
-						PassedDialog.open();
+					this.pauseTimer();
+					PassedDialog.open();
 				} else {
 					this.getOwnerComponent().getModel("global").setProperty("/passedAttempts", passedAttempts);
 				}
