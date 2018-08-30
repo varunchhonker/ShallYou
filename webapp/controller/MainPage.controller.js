@@ -5,7 +5,7 @@ sap.ui.define([
 ], function (BaseController, History) {
 	"use strict";
 	var oController = "";
-	var time = "";
+	var time = 60;
 	var FailedDialog = "";
 	var PassedDialog = "";
 
@@ -272,7 +272,7 @@ sap.ui.define([
 				}, 2000);*/
 				$(".timerContainer").removeClass("shake");
 				oController.byId("failedDialogReasonText").setText("Time's Up!");
-				FailedDialog.open();
+				//FailedDialog.open();
 				//$(".timerContainer").fadeOut();
 			} else {
 				if ((value / time) * 100 <= 30) {
