@@ -39,6 +39,19 @@ sap.ui.define([
 			//	var sRootPath =jQuery.sap.getModulePath("ShallYou.images");
 			this.setModel(models.createDeviceModel(), "device");
 			
-		}
+			serviceObject.read("getUserProfile?userId=IdjJ4KZIdTYeGI2yKcOx4BFgODi2", "", this.getUserProfileCallback, this);
+			
+		},
+		
+		getUserProfileCallback: function(data, response) {
+			if (response) {
+				this.getModel("global").setProperty("/Journey", data.journey);
+				this.getModel("global").setProperty("/Coins", data.coinsLeft);
+				this.getModel("global").setProperty("/Levels", data.level);
+				if(data.journey){
+					this.getModel("global").setProperty("/firstTime", false);
+				}
+			}
+		},
 	});
 });

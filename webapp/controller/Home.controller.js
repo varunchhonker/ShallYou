@@ -12,18 +12,7 @@ sap.ui.define([
 		 */
 
 		onInit: function() {
-			serviceObject.read("getUserProfile?userId=IdjJ4KZIdTYeGI2yKcOx4BFgODi2", "", this.getUserProfileCallback, this);
-		},
-
-		getUserProfileCallback: function(data, response) {
-			if (response) {
-				this.getOwnerComponent().getModel("global").setProperty("/Journey", data.journey);
-				this.getOwnerComponent().getModel("global").setProperty("/Coins", data.coinsLeft);
-				this.getOwnerComponent().getModel("global").setProperty("/Levels", data.level);
-				if(data.journey){
-					this.getOwnerComponent().getModel("global").setProperty("/firstTime", false);
-				}
-			}
+			
 		},
 
 		onAfterRendering: function() {
