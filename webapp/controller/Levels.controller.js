@@ -1,6 +1,6 @@
 sap.ui.define([
 	"ShallYou/controller/BaseController"
-], function(BaseController) {
+], function (BaseController) {
 	"use strict";
 
 	return BaseController.extend("ShallYou.controller.Levels", {
@@ -10,15 +10,19 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf ShallYou.view.InitialView
 		 */
-		onInit: function() {
+		onInit: function () {
 			this.getRouter().getRoute("levels").attachPatternMatched(this.onRouteMatched, this);
 		},
 
-		onRouteMatched: function() {
+		onRouteMatched: function () {
 			this.byId("levelList").removeSelections(true);
 		},
 
-		onSelectLevel: function(oEvent) {
+		onNavBack: function () {
+			this.getRouter().navTo("home", {}, true);
+		},
+
+		onSelectLevel: function (oEvent) {
 			//var levelId="1";
 			var levelObject = oEvent.getParameters().listItem.getBindingContext("global").getObject();
 
@@ -30,7 +34,7 @@ sap.ui.define([
 			} else {
 				var icon = oEvent.getParameters().listItem.getAggregation("content")[0].getAggregation("items")[0].getAggregation("items")[0];
 				icon.addStyleClass("shake");
-				window.setTimeout(function() {
+				window.setTimeout(function () {
 					icon.removeStyleClass("shake");
 				}, 2000);
 				this.byId("levelList").removeSelections(true);

@@ -4,13 +4,11 @@
 /*.sapUiRespGrid.sapUiRespGridHSpace1.paddingGrid {
     padding: .1rem 2rem;
 }*/
+
 @font-face {
     font-family: 'FontName';
     src: url('FileName.eot');
-    src: url('FileName.eot?#iefix') format('embedded-opentype'),
-         url('FileName.woff') format('woff'),
-         url('FileName.ttf') format('truetype'),
-         url('FileName.svg#FontName') format('svg');
+    src: url('FileName.eot?#iefix') format('embedded-opentype'), url('FileName.woff') format('woff'), url('FileName.ttf') format('truetype'), url('FileName.svg#FontName') format('svg');
     font-style: normal;
     font-weight: normal;
 }
@@ -84,7 +82,7 @@
     vertical-align: middle;
 }
 
-.menuButtons .sapMBtnContent{
+.menuButtons .sapMBtnContent {
     font-size: 1.4rem;
     font-family: sans-serif;
     font-weight: 600;
@@ -99,7 +97,7 @@
 
 .homePageLogoText {
     color: #fafafa;
-    font-size: -webkit-xxx-large;
+    font-size: 48px !important;
     font-family: cursive;
     font-style: italic;
     font-weight: 600;
@@ -171,7 +169,7 @@
 
 .levelsPage>section {
     /*background-color: #bbdefb !important;*/
-    background-image: url(../images/Backgrounds/levelsPage.jpg);
+    background-image: url(../images/Backgrounds/levelsPage2.jpg);
 }
 
 .levelsPageSubheaderBar {
@@ -194,6 +192,7 @@
     border-radius: 17px;
     height: 7rem;
     border: 2px solid cornflowerblue;
+    opacity: 0.9;
     /* background-image: url(../images/Backgrounds/images2.jpg);*/
 }
 
@@ -219,7 +218,7 @@
 .levelsPageListItemScore {
     text-align: left;
     font-size: 1.3rem;
-    color: #ffb300;
+    color: #ff0000;
     margin-top: 0.7rem;
 }
 
@@ -234,21 +233,29 @@
 
 .mainPage>section {
     /*background-color: #bbdefb !important;*/
-    background-image: url(../images/Backgrounds/mainPage.jpeg);
+    background-image: url(../images/Backgrounds/mainPage2.jpg);
 }
 
 .mainPageAttemptsVBox {
     /*margin-top: 1rem;*/
 }
 
+.mainPageAttemptsHBox {
+    margin-top: 3px !important;
+}
+
 .mainPageHintCarousel {
     /*margin: 1rem 0rem;*/
 }
 
+.mainPageHintCarousel .sapMScrollContScroll {
+    padding-top: 0px !important;
+}
+
 .mainPageHintText {
     text-align: center;
-    color: skyblue;
-    font-size: larger;
+    color: #f7f7f7;
+    font-size: 20px;
     font-family: monospace;
 }
 
@@ -288,13 +295,13 @@
     text-align: center !important;
     background-color: #333333;
     color: white;
-    font-size: x-large;
+    font-size: 24px;
     border: 4px white solid;
     font-family: cursive;
 }
 
-.mainPageMovieFirstAlphabetInput .sapMInputBaseInner{
-	/*border: 4px white dotted;*/
+.mainPageMovieFirstAlphabetInput .sapMInputBaseInner {
+    /*border: 4px white dotted;*/
 }
 
 .mainPageEmptyInput {
@@ -304,13 +311,15 @@
 .mainPageKeyboardButtons {
     padding-right: 1px;
     padding-left: 1px;
+    width: 38px !important;
 }
 
 .mainPageKeyboardButtons .sapMBtnInner {
     color: black;
-    font-size: x-large;
     font-family: sans-serif;
+    font-size: 24px;
     border-radius: 10px !important;
+    padding: 0px;
 }
 
 .customControlWrapperDiv > * {

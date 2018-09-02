@@ -51,7 +51,7 @@
 					<Image id="o2" class="imageHeightMain"/>
 					<Image id="d" class="imageHeightMain"/>
 				</HBox>-->
-				<HBox justifyContent="Center">
+				<HBox justifyContent="Center" class="mainPageAttemptsHBox">
 					<custom:AttemptsIndicator id="i1" src="{global>/modulePath}/images/B.png" label=""></custom:AttemptsIndicator>
 					<custom:AttemptsIndicator id="i2" src="{global>/modulePath}/images/O.png" label=""></custom:AttemptsIndicator>
 					<custom:AttemptsIndicator id="i3" src="{global>/modulePath}/images/L.png" label=""></custom:AttemptsIndicator>
