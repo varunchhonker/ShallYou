@@ -106,12 +106,15 @@
 				"pattern": "purchases",
 				"name": "purchases",
 				"target": "purchases"
+			}, {
+				"pattern": "movie",
+				"name": "movie",
+				"target": "movie"
 			}],
 			"targets": {
 				"home": {
 					"viewName": "Home"
 				},
-
 				"journey": {
 					"viewName": "JourneySelection"
 				},
@@ -132,6 +135,9 @@
 				},
 				"purchases": {
 					"viewName": "Purchases"
+				},
+				"movie": {
+					"viewName": "Movie"
 				}
 			}
 		},

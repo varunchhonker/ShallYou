@@ -52,9 +52,14 @@ sap.ui.define([
 		},
 
 		onRouteMatched: function (oEvent) {
-
 			var levelId = oEvent.getParameter("arguments").levelId;
+			this.getOwnerComponent().getModel("global").setProperty("/currentLevel", levelId);
+			this.getMovie();
+		},
+
+		getMovie: function () {
 			var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad";
+			var levelId = this.getOwnerComponent().getModel("global").getProperty("/currentLevel");
 			serviceObject.read(url, levelId, this.onSkipCallback, this);
 			this.resetView();
 		},
@@ -271,11 +276,11 @@ sap.ui.define([
 					hBox.removeStyleClass("shake");
 				}, 2000);*/
 				$(".timerContainer").removeClass("shake");
-				oController.byId("failedDialogReasonText").setText("Time's Up!");
-				//FailedDialog.open();
+				oController.onFail("Time's Up!");
+
 				//$(".timerContainer").fadeOut();
 			} else {
-				if ((value / time) * 100 <= 30) {
+				if ((value / time) * 100 <= 20) {
 					$(".timerContainer").addClass("shake");
 					window.setTimeout(function () {
 						$(".timerContainer").removeClass("shake");
@@ -353,8 +358,7 @@ sap.ui.define([
 
 					if (failedAttempts === this.getOwnerComponent().getModel("global").getProperty("/possibleAttempts")) {
 						this.pauseTimer();
-						this.byId("failedDialogReasonText").setText("Maximum possible attempts reached!");
-						FailedDialog.open();
+						this.onFail("Maximum possible attempts reached!");
 					}
 
 					this.getOwnerComponent().getModel("global").setProperty("/failedAttempts", failedAttempts);
@@ -373,13 +377,25 @@ sap.ui.define([
 				var subtractor = numbers > 1 ? 1 : 0;
 				if (passedAttempts === uniqueChars.length - subtractor) {
 					var score = Math.ceil(((uniqueChars.length - subtractor) / (passedAttempts + failedAttempts)) * 100);
-					this.byId("passedDialogScoreText").setText("Your Passing Score: " + score + "%");
 					this.pauseTimer();
-					PassedDialog.open();
+					this.onPass("Your Passing Score: " + score + "%");
+
 				} else {
 					this.getOwnerComponent().getModel("global").setProperty("/passedAttempts", passedAttempts);
 				}
 			}
+		},
+
+		onFail: function (failText) {
+			var url = "onTimeOut?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1";
+			serviceObject.readWithoutCallback(url, "");
+			this.byId("failedDialogReasonText").setText(failText);
+			FailedDialog.open();
+		},
+
+		onPass: function (passText) {
+			this.byId("passedDialogScoreText").setText(passText);
+			PassedDialog.open();
 		},
 
 		indicateFailedAttempt: function (control, src, char) {
@@ -405,15 +421,22 @@ sap.ui.define([
 			Promise.reject();
 		},
 
-		showMovie: function () {
-			serviceObject.readWithoutCallback("getShowMovie?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&movieIdl=1", "");
-			this.getOwnerComponent().getModel("global").getData();
-
+		onPressShowMovie: function () {
+			this.getRouter().navTo("movie");
+			FailedDialog.close();
 		},
 
-		proceedToNextMovie: function () {
+		onPressPlayNextMovie: function () {
+			this.getMovie();
+			FailedDialog.close();
+			PassedDialog.close();
+		},
 
-		}
+		onPressGoToLevels: function () {
+			FailedDialog.close();
+			PassedDialog.close();
+			this.onPressLevels();
+		},
 
 	});
 });

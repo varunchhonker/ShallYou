@@ -27,8 +27,8 @@ sap.ui.define([
 			var levelObject = oEvent.getParameters().listItem.getBindingContext("global").getObject();
 
 			if (!levelObject.locked) {
-				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("mainpage", {
+				
+				this.getRouter().navTo("mainpage", {
 					levelId: levelObject.id
 				});
 			} else {
@@ -41,8 +41,8 @@ sap.ui.define([
 			}
 
 			/*Hardcoding for testing*/
-			/*var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("mainpage", {
+			/*
+			this.getRouter().navTo("mainpage", {
 				levelId: "Level1"
 			});*/
 			/*`````````````*/

@@ -1,0 +1,20 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	controllerName="ShallYou.controller.Movie" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>title}" class="moviePage" showHeader="false">
+		<content>
+			<FlexBox direction="Column" justifyContent="Center" alignContent="End" alignItems="End" class="moviePageFlexBox">
+				<Text text="{global>/Movie/name}" textAlign="Center" class="moviePageMovieNameText"/>
+				<Text text="- {global>/Movie/hint1}" textAlign="Center" class="moviePageHintText"/>
+				<Text text="- {global>/Movie/hint2}" textAlign="Center" class="moviePageHintText"/>
+			</FlexBox>
+		</content>
+		<footer>
+			<Bar class="moviePageFooter">
+				<contentRight>
+					<Button text="Continue" class="homePageCenterButtons menuButtons" press="onPressContinue"/>
+					<!--<Button text="Go To Levels" class="homePageCenterButtons menuButtons" press="onPressGoToLevels"/>-->
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -21,7 +21,7 @@
 				</InputListItem>
 				<InputListItem label="Current Journey">
 					<HBox justifyContent="End" alignContent="Center" alignItems="Center">
-						<Label text="{global>/Journey}" class="sapUiTinyMarginEnd"/>
+						<Label text="{global>/Journey}" class="sapUiTinyMarginEnd" design="Bold"/>
 						<core:Icon src="sap-icon://edit" press="onPressChangeJourney"/>
 					</HBox>
 				</InputListItem>

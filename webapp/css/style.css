@@ -124,6 +124,8 @@
 .homePage>section {
     /*background-color: #ec407a !important;*/
     background-image: url(../images/Backgrounds/homePage.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -170,6 +172,8 @@
 .levelsPage>section {
     /*background-color: #bbdefb !important;*/
     background-image: url(../images/Backgrounds/levelsPage2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .levelsPageSubheaderBar {
@@ -234,6 +238,8 @@
 .mainPage>section {
     /*background-color: #bbdefb !important;*/
     background-image: url(../images/Backgrounds/mainPage2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .mainPageAttemptsVBox {
@@ -342,6 +348,40 @@
 
 .passedDialog {
     border-radius: 20px !important;
+}
+
+
+/*Movie Page*/
+
+.moviePage>section {
+    /*background-color: #bbdefb !important;*/
+    background-image: url(../images/Backgrounds/moviePage2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.moviePageFlexBox {
+    height: 100% !important;
+    width: 70% !important;
+    margin-left: 30% !important;
+    padding: 10px !important;
+}
+
+.moviePageMovieNameText {
+    font-size: 45px !important;
+    color: #fafafa !important;
+    text-shadow: 3px 3px #5c181d !important;
+}
+
+.moviePageHintText {
+    font-size: 23px !important;
+    color: #91c8f6 !important;
+    text-shadow: 2px 2px #5c181d !important;
+}
+
+.moviePageFooter {
+    background-color: #5c181d !important;
+    border-top: 0px !important;
 }
 
 

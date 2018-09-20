@@ -10,10 +10,10 @@
 		<l:Grid defaultSpan="L12 M12 S12">
 			<l:content>
 				<HBox justifyContent="Center">
-					<Button text="Play Next Movie" icon="sap-icon://lead" iconFirst="false" press="proceedToNextMovie" class="homePageCenterButtons menuButtons"/>
+					<Button text="Play Next Movie" iconFirst="false" press="onPressPlayNextMovie" class="homePageCenterButtons menuButtons"/>
 				</HBox>
 				<HBox justifyContent="Center">
-					<Button text="Go To Levels" iconFirst="false" press="onPressLevels" class="homePageCenterButtons menuButtons"/>
+					<Button text="Go To Levels" iconFirst="false" press="onPressGoToLevels" class="homePageCenterButtons menuButtons"/>
 				</HBox>
 			</l:content>
 		</l:Grid>

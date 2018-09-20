@@ -18,7 +18,7 @@
 						<!--<Button text="Start" press="startTimer"/>-->
 						<HBox id="timerContainer" class="timerContainer" width="3rem">
 							<customData>
-								<core:CustomData writeToDom="true" key="timer" value="10"/>
+								<core:CustomData writeToDom="true" key="timer" value="45"/>
 							</customData>
 						</HBox>
 						<!--<Button text="Pause" press="pauseTimer"/>
@@ -64,7 +64,8 @@
 				</HBox>
 			</VBox>
 			<VBox class="mainPagePuzzleVBox" justifyContent="Center" alignContent="Center" alignItems="Center">
-				<Carousel class="sapUiContentPadding mainPageHintCarousel" arrowsPlacement="Content" loop="false" showPageIndicator="false" pageIndicatorPlacement="Top">
+				<Carousel class="sapUiContentPadding mainPageHintCarousel" arrowsPlacement="Content" loop="false" showPageIndicator="false"
+					pageIndicatorPlacement="Top">
 					<pages>
 						<FlexBox justifyContent="Center">
 							<Text id="hintText1" class="mainPageHintText" textAlign="Center"></Text>
