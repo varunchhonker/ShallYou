@@ -16,8 +16,14 @@
 		</customHeader>
 		<content>
 			<List>
-				<InputListItem label="Sound">
-					<Switch state="true" customTextOn="On" customTextOff="Off"/>
+				<InputListItem label="Sounds">
+					<Switch state="{global>/Sounds}" customTextOn="On" customTextOff="Off" change="onChangeSoundSwitch"/>
+				</InputListItem>
+				<InputListItem label="Clock Ticks">
+					<Switch state="{global>/ClockTicks}" customTextOn="On" customTextOff="Off" change="onChangeClockTicksSwitch"/>
+				</InputListItem>
+				<InputListItem label="Music">
+					<Switch state="{global>/Music}" customTextOn="On" customTextOff="Off" change="onChangeMusicSwitch"/>
 				</InputListItem>
 				<InputListItem label="Current Journey">
 					<HBox justifyContent="End" alignContent="Center" alignItems="Center">

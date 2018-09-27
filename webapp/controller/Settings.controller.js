@@ -1,6 +1,6 @@
 sap.ui.define([
 	"ShallYou/controller/BaseController"
-], function(BaseController) {
+], function (BaseController) {
 	"use strict";
 
 	return BaseController.extend("ShallYou.controller.Settings", {
@@ -39,10 +39,27 @@ sap.ui.define([
 		//	onExit: function() {
 		//
 		//	},
-		
-		onPressChangeJourney:function(){
+
+		onPressChangeJourney: function () {
+			this.playButtonSound();
 			this.getRouter().navTo("journey");
-		}
+		},
+
+		onChangeSoundSwitch: function (oEvent) {
+			this.playSwitchChangeSound();
+			this.getOwnerComponent().getModel("global").setProperty("/Sounds", oEvent.getParameter("state"));
+		},
+
+		onChangeClockTicksSwitch: function (oEvent) {
+			this.playSwitchChangeSound();
+			this.getOwnerComponent().getModel("global").setProperty("/ClockTicks", oEvent.getParameter("state"));
+		},
+
+		onChangeMusicSwitch: function (oEvent) {
+			this.playSwitchChangeSound();
+			this.getOwnerComponent().getModel("global").setProperty("/Music", oEvent.getParameter("state"));
+			this.playPauseBackgroundMusic();
+		},
 
 	});
 

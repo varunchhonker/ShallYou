@@ -37,6 +37,7 @@ sap.ui.define([
 		},
 
 		onNavBack: function () {
+			this.playButtonSound();
 			var sPreviousHash = History.getInstance().getPreviousHash();
 
 			if (sPreviousHash !== undefined && !sPreviousHash.toLowerCase().includes("journey")) {
@@ -248,6 +249,7 @@ sap.ui.define([
 		startTimer: function () {
 
 			$(".timerContainer").TimeCircles().start();
+			this.playClockTickSound();
 			/*$(".timerContainer").animate({
 				height: 'toggle'
 			}, "fast");
@@ -259,16 +261,18 @@ sap.ui.define([
 
 		pauseTimer: function () {
 			$(".timerContainer").TimeCircles().stop();
+			this.pauseClockTickSound();
 		},
 
 		restartTimer: function () {
 			$(".timerContainer").TimeCircles().restart();
+			this.playClockTickSound();
 		},
 
 		onTimerChange: function (unit, value, total) {
 			//console.log(unit, value, total);
 			if (value === 0) {
-				//sap.m.MessageToast.show("Times's Up!");
+				//sap.m.MessageToast.show("Time's Up!");
 				//$(".timerContainer").animate({left: '10px'}).animate({right: '10px'});
 				/*var hBox = this.byId("timerContainer");
 				hBox.addStyleClass("shake");
@@ -277,8 +281,10 @@ sap.ui.define([
 				}, 2000);*/
 				$(".timerContainer").removeClass("shake");
 				oController.onFail("Time's Up!");
-
 				//$(".timerContainer").fadeOut();
+			} else if (value === 1) {
+				oController.playClockTimeOverBellSound();
+				oController.pauseClockTickSound();
 			} else {
 				if ((value / time) * 100 <= 20) {
 					$(".timerContainer").addClass("shake");
@@ -315,6 +321,7 @@ sap.ui.define([
 				}
 			}
 			if (failedAttempt) {
+				this.playWrongCharSound();
 				button.addStyleClass("mainPageWrongCharButton");
 
 				var usedCharacters = this.getOwnerComponent().getModel("global").getProperty("/usedCharacters");
@@ -365,6 +372,7 @@ sap.ui.define([
 					this.getOwnerComponent().getModel("global").setProperty("/usedCharacters", usedCharacters);
 				}
 			} else {
+				this.playRightCharSound();
 				var passedAttempts = this.getOwnerComponent().getModel("global").getProperty("/passedAttempts");
 				passedAttempts++;
 				var uniqueChars = res.filter(function (item, i, ar) {
@@ -387,6 +395,7 @@ sap.ui.define([
 		},
 
 		onFail: function (failText) {
+			this.playFailSound();
 			var url = "onTimeOut?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1";
 			serviceObject.readWithoutCallback(url, "");
 			this.byId("failedDialogReasonText").setText(failText);
@@ -394,6 +403,7 @@ sap.ui.define([
 		},
 
 		onPass: function (passText) {
+			this.playPassSound();
 			this.byId("passedDialogScoreText").setText(passText);
 			PassedDialog.open();
 		},

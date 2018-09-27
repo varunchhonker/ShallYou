@@ -20,6 +20,7 @@ sap.ui.define([
 		},
 
 		onPressPlay: function(oEvent) {
+			this.playButtonSound();
 			var firstTime = this.getOwnerComponent().getModel("global").getProperty("/firstTime");
 			if (firstTime) {
 				this.getRouter().navTo("journey");

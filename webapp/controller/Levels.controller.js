@@ -19,19 +19,22 @@ sap.ui.define([
 		},
 
 		onNavBack: function () {
+			this.playButtonSound();
 			this.getRouter().navTo("home", {}, true);
 		},
 
 		onSelectLevel: function (oEvent) {
 			//var levelId="1";
+			
 			var levelObject = oEvent.getParameters().listItem.getBindingContext("global").getObject();
 
 			if (!levelObject.locked) {
-				
+				this.playButtonSound();
 				this.getRouter().navTo("mainpage", {
 					levelId: levelObject.id
 				});
 			} else {
+				this.playLevelLockedSound();
 				var icon = oEvent.getParameters().listItem.getAggregation("content")[0].getAggregation("items")[0].getAggregation("items")[0];
 				icon.addStyleClass("shake");
 				window.setTimeout(function () {
