@@ -8,6 +8,7 @@ sap.ui.define([
 	var time = 60;
 	var FailedDialog = "";
 	var PassedDialog = "";
+	var dummyAdDialog = "";
 
 	return BaseController.extend("ShallYou.controller.MainPage", {
 
@@ -27,8 +28,13 @@ sap.ui.define([
 			// });
 			FailedDialog = sap.ui.xmlfragment(oController.getView().getId(), "ShallYou.fragment.FailedDialog", this);
 			oController.getView().addDependent(FailedDialog);
+			FailedDialog.setEscapeHandler(this.dialogEscapeHandler);
 			PassedDialog = sap.ui.xmlfragment(oController.getView().getId(), "ShallYou.fragment.PassedDialog", this);
 			oController.getView().addDependent(PassedDialog);
+			PassedDialog.setEscapeHandler(this.dialogEscapeHandler);
+			dummyAdDialog = sap.ui.xmlfragment(oController.getView().getId(), "ShallYou.fragment.dummyAdDialog", this);
+			oController.getView().addDependent(dummyAdDialog);
+			dummyAdDialog.setEscapeHandler(this.dialogEscapeHandler);
 
 		},
 
@@ -38,18 +44,16 @@ sap.ui.define([
 
 		onNavBack: function () {
 			this.playButtonSound();
-			var sPreviousHash = History.getInstance().getPreviousHash();
-
-			if (sPreviousHash !== undefined && !sPreviousHash.toLowerCase().includes("journey")) {
-				// The history contains a previous entry
-				history.go(-1);
-			} else {
-				// Otherwise we go backwards with a forward history
-				var bReplace = true;
-				this.getRouter().navTo("home", {}, bReplace);
-			}
-
+			sap.m.MessageToast.show("Aborting Level", {
+				at : sap.ui.core.Popup.Dock.CenterCenter
+			});
+			var levelId = this.getOwnerComponent().getModel("global").getProperty("/currentLevel");
+			var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad&level=" + levelId;
+			serviceObject.readWithoutCallback(url, "");
 			this.pauseTimer();
+			window.setTimeout(function () {
+				this.onPressLevels();
+			}.bind(this), 2000);
 		},
 
 		onRouteMatched: function (oEvent) {
@@ -59,10 +63,30 @@ sap.ui.define([
 		},
 
 		getMovie: function () {
-			var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad";
 			var levelId = this.getOwnerComponent().getModel("global").getProperty("/currentLevel");
-			serviceObject.read(url, levelId, this.onSkipCallback, this);
+			var url = "getNextMovies?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=" + levelId;
+			serviceObject.read(url, levelId, this.getNextMoviesCallback, this);
+			this.pauseTimer();
 			this.resetView();
+		},
+
+		skipMovie: function () {
+			var levelId = this.getOwnerComponent().getModel("global").getProperty("/currentLevel");
+			var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad&level=" + levelId;
+			serviceObject.read(url, levelId, this.getNextMoviesCallback, this);
+			this.pauseTimer();
+			this.resetView();
+		},
+
+		getNextMoviesCallback: function (data, response, levelId) {
+			if (response) {
+				if (data === "Ad") {
+					this.showAd();
+				} else {
+					this.getOwnerComponent().getModel("global").setProperty("/Movie", data);
+					this.initializeView(data);
+				}
+			}
 		},
 
 		resetView: function () {
@@ -71,31 +95,27 @@ sap.ui.define([
 			this.getOwnerComponent().getModel("global").setProperty("/passedAttempts", 0);
 			this.getOwnerComponent().getModel("global").setProperty("/failedAttempts", 0);
 			this.getOwnerComponent().getModel("global").setProperty("/usedCharacters", "");
+			this.getView().byId("hintText1").setText("");
+			this.getView().byId("hintText2").setText("");
 			this.resetKeyboardState();
 			this.resetFailedAttemptIndicator();
 		},
 
-		onSkipCallback: function (data, response, levelId) {
-			/*if (response) {
-				var url = "getNextMovies?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=" + levelId;
-				serviceObject.read(url, "", this.getNextMovieCallback, this);
-			}*/
-			//data.name = "Rudraksh";
-			//data.name="Kabhi khusshi kabhi gham";
-			//data.name="Saajan ki aayegi baraat";
-			//data.name="dil ka rishta bada hi pyaara hai";
-			if (response) {
-				this.getOwnerComponent().getModel("global").setProperty("/Movie", data);
-				this.initializeView(data);
-			}
+		showAd: function () {
+			this.updateAdStatus();
+			
+			/*Do ad show stuff and call then fetch movie after ad*/
+			dummyAdDialog.open();
+			window.setTimeout(function () {
+				dummyAdDialog.close();
+				this.getMovie();
+			}.bind(this), 5000);
 		},
 
-		/*getNextMovieCallback: function (data, response) {
-			if (response) {
-				this.getOwnerComponent().getModel("global").setProperty("/Movie", data);
-				this.initializeView(data);
-			}
-		},*/
+		updateAdStatus: function () {
+			var url = "updateAdStatus?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1";
+			serviceObject.readWithoutCallback(url, "");
+		},
 
 		initializeView: function (data) {
 
@@ -170,7 +190,7 @@ sap.ui.define([
 
 		setHints: function (data) {
 			this.getView().byId("hintText1").setText(data.hint1);
-			this.getView().byId("hintText1").setText(data.hint2);
+			this.getView().byId("hintText2").setText(data.hint2);
 		},
 
 		resetKeyboardState: function () {
@@ -272,13 +292,6 @@ sap.ui.define([
 		onTimerChange: function (unit, value, total) {
 			//console.log(unit, value, total);
 			if (value === 0) {
-				//sap.m.MessageToast.show("Time's Up!");
-				//$(".timerContainer").animate({left: '10px'}).animate({right: '10px'});
-				/*var hBox = this.byId("timerContainer");
-				hBox.addStyleClass("shake");
-				window.setTimeout(function () {
-					hBox.removeStyleClass("shake");
-				}, 2000);*/
 				$(".timerContainer").removeClass("shake");
 				oController.onFail("Time's Up!");
 				//$(".timerContainer").fadeOut();
@@ -301,9 +314,6 @@ sap.ui.define([
 			button.setEnabled(false);
 			var buttonId = oEvent.getSource().getId().slice(-2);
 			var char = buttonId.charAt(0).toUpperCase();
-
-			/*var url = "checkChar?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&level=Level1&chkChar=" + char;
-			serviceObject.readWithoutCallback(url, "");*/
 
 			var failedAttempts = this.getOwnerComponent().getModel("global").getProperty("/failedAttempts");
 
@@ -394,9 +404,11 @@ sap.ui.define([
 			}
 		},
 
-		onFail: function (failText) {
+		onFail: function (failText, failReason) {
 			this.playFailSound();
-			var url = "onTimeOut?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1";
+			//var url = "onTimeOut?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1";
+			var levelId = this.getOwnerComponent().getModel("global").getProperty("/currentLevel");
+			var url = "onSkip?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&skipType=Ad&level=" + levelId;
 			serviceObject.readWithoutCallback(url, "");
 			this.byId("failedDialogReasonText").setText(failText);
 			FailedDialog.open();
@@ -427,8 +439,8 @@ sap.ui.define([
 			}
 		},
 
-		failedDialogEscapeHandler: function (promise) {
-			Promise.reject();
+		dialogEscapeHandler: function (promise) {
+			promise.reject();
 		},
 
 		onPressShowMovie: function () {

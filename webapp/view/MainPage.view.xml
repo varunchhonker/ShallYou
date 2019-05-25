@@ -4,17 +4,14 @@
 		<customHeader>
 			<Bar class="pageHeader">
 				<contentLeft>
-					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons" press="onNavBack"/>
+					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons pageHeaderLeftIcons" press="onNavBack"/>
 				</contentLeft>
 				<contentMiddle>
 					<HBox>
-						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
-						<Label text="{global>/Coins}" design="Bold" class="pageHeaderCoinsLabel"/>
-					</HBox>
-				</contentMiddle>
-				<contentRight>
-					<!--<core:Icon src="sap-icon://action-settings" class="pageHeaderIcons" press="onPressSettings"/>-->
-					<HBox>
+						<!--<HBox>
+							<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
+							<Label text="{global>/Coins}" design="Bold" class="pageHeaderCoinsLabel"/>
+						</HBox>-->
 						<!--<Button text="Start" press="startTimer"/>-->
 						<HBox id="timerContainer" class="timerContainer" width="3rem">
 							<customData>
@@ -24,6 +21,9 @@
 						<!--<Button text="Pause" press="pauseTimer"/>
 						<Button text="Restart" press="restartTimer"/>-->
 					</HBox>
+				</contentMiddle>
+				<contentRight>
+					<core:Icon src="sap-icon://open-command-field" class="pageHeaderIcons pageHeaderRightIcons" press="skipMovie" tooltip="Skip Movie"/>
 				</contentRight>
 			</Bar>
 		</customHeader>

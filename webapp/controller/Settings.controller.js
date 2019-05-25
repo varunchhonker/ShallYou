@@ -48,17 +48,20 @@ sap.ui.define([
 		onChangeSoundSwitch: function (oEvent) {
 			this.playSwitchChangeSound();
 			this.getOwnerComponent().getModel("global").setProperty("/Sounds", oEvent.getParameter("state"));
+			localStorage.setItem("Sounds", oEvent.getParameter("state"));
 		},
 
 		onChangeClockTicksSwitch: function (oEvent) {
 			this.playSwitchChangeSound();
 			this.getOwnerComponent().getModel("global").setProperty("/ClockTicks", oEvent.getParameter("state"));
+			localStorage.setItem("ClockTicks", oEvent.getParameter("state"));
 		},
 
 		onChangeMusicSwitch: function (oEvent) {
 			this.playSwitchChangeSound();
 			this.getOwnerComponent().getModel("global").setProperty("/Music", oEvent.getParameter("state"));
 			this.playPauseBackgroundMusic();
+			localStorage.setItem("Music", oEvent.getParameter("state"));
 		},
 
 	});

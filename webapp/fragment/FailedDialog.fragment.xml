@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
-	<Dialog showHeader="true" title="You Failed!" draggable="false" escapeHandler="failedDialogEscapeHandler" class="failedDialog">
+	<Dialog showHeader="true" title="You Failed!" draggable="false" class="failedDialog">
 		<subHeader>
 			<Bar>
 				<contentMiddle>
@@ -10,10 +10,10 @@
 		<l:Grid defaultSpan="L12 M12 S12">
 			<l:content>
 				<HBox justifyContent="Center">
-					<Button text="Show Movie" icon="sap-icon://lead" iconFirst="false" class="homePageCenterButtons menuButtons" press="onPressShowMovie"></Button>
+					<Button text="Show Movie" class="homePageCenterButtons menuButtons" press="onPressShowMovie"></Button>
 				</HBox>
 				<HBox justifyContent="Center">
-					<Button text="Play Next Movie" icon="sap-icon://lead" iconFirst="false" class="homePageCenterButtons menuButtons"
+					<Button text="Play Next Movie" class="homePageCenterButtons menuButtons"
 						press="onPressPlayNextMovie"/>
 				</HBox>
 				<HBox justifyContent="Center">

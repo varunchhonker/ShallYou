@@ -18,12 +18,17 @@
 		<!--<script type="text/javascript" src="js/Timer/TimeCircles.js"></script>
 		<link href="js/Timer/TimeCircles.css" rel="stylesheet"> -->
 		
+		<!--Adding fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		
 		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-functions.js"></script>
 		<script>
 		  // Initialize Firebase
-		  var config = {
+		  /*var config = {
 		    apiKey: "AIzaSyDKY3fjVNQtDtuBAJNVhi7DYkZy_KFy1Ds",
 		    authDomain: "shallyou-817e0.firebaseapp.com",
 		    databaseURL: "https://shallyou-817e0.firebaseio.com",
@@ -31,13 +36,16 @@
 		    storageBucket: "shallyou-817e0.appspot.com",
 		    messagingSenderId: "414685995754"
 		  };
+		  
 		  firebase.initializeApp(config);
-		  firebase.auth().signInAnonymously().catch(function(error) {
+		  firebase.auth().signInAnonymously().then(function(object)){
+		  		//
+		  }).catch(function(error) {
 				// Handle Errors here.
 				var errorCode = error.code;
 				var errorMessage = error.message;
 				// ...
-			});
+			});*/
 		</script>
 		<script>
 			sap.ui.getCore().attachInit(function() {

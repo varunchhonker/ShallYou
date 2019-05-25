@@ -4,7 +4,7 @@
 		<customHeader>
 			<Bar class="pageHeader">
 				<contentLeft>
-					<core:Icon src="sap-icon://customer" class="pageHeaderIcons" press="onPressProfile"/>
+					<core:Icon src="sap-icon://customer" class="pageHeaderIcons pageHeaderLeftIcons" press="onPressProfile"/>
 				</contentLeft>
 				<contentMiddle>
 					<HBox>
@@ -13,7 +13,7 @@
 					</HBox>
 				</contentMiddle>
 				<contentRight>
-					<core:Icon src="sap-icon://action-settings" class="pageHeaderIcons" press="onPressSettings"/>
+					<core:Icon src="sap-icon://action-settings" class="pageHeaderIcons pageHeaderRightIcons" press="onPressSettings"/>
 					<!--<HBox>
 						<Button text="Start" press="startTimer"/>
 						<HBox id="timerContainer" class="timerContainer" width="3rem">
@@ -47,20 +47,20 @@
 					<HBox justifyContent="Center">
 						<Button icon="sap-icon://media-play" text="Play" press="onPressPlay" class="homePageCenterButtons menuButtons"></Button>
 					</HBox>
-					<HBox justifyContent="Center">
+					<!--<HBox justifyContent="Center">
 						<Button icon="sap-icon://competitor" text="Achievements" press="onPressAchievements" class="homePageCenterButtons menuButtons"></Button>
-					</HBox>
+					</HBox>-->
 					<HBox justifyContent="Center">
 						<Button icon="sap-icon://contacts" text="Rules" press="onPressRules" class="homePageCenterButtons menuButtons"></Button>
 					</HBox>
-					<HBox justifyContent="Center">
+					<!--<HBox justifyContent="Center">
 						<HBox justifyContent="Center" class="homePageBottomButtonsHBox">
 							<Button icon="{global>/modulePath}/images/fb.png" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
 							<Button icon="{global>/modulePath}/images/gplus.png" tooltip="Share On Google+" class="homePageBottomButtons"></Button>
 							<Button icon="sap-icon://action" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
 							<Button icon="sap-icon://favorite" tooltip="Share On Facebook" class="homePageBottomButtons"></Button>
 						</HBox>
-					</HBox>
+					</HBox>-->
 				</l:content>
 			</l:Grid>
 		</content>

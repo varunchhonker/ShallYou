@@ -29,7 +29,7 @@ sap.ui.define([
 			//do service call to set journey
 			this.getView().byId("nextButton").setEnabled(false);
 			var journey = this.byId("journeyRBG").getSelectedButton().getText();
-			serviceObject.read("changeJourney?userId=IdjJ4KZIdTYeGI2yKcOx4BFgODi2&journey=" + journey, "", this.setJourneyCallback, this);
+			serviceObject.read("changeJourney?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1&journey=" + journey, "", this.setJourneyCallback, this);
 		},
 
 		onJourneySelection: function(oEvent) {
@@ -41,7 +41,7 @@ sap.ui.define([
 				var oController=this;
 				this.getOwnerComponent().getModel("global").setProperty("/firstTime", false);
 				setTimeout(function() {
-					serviceObject.read("getUserProfile?userId=IdjJ4KZIdTYeGI2yKcOx4BFgODi2", "", oController.getUserProfileCallback, oController);
+					serviceObject.read("getUserProfile?userId=zLJcPPx9ChbD52eiKcQeOnq8fst1", "", oController.getUserProfileCallback, oController);
 				}, 3000);
 			}
 		},

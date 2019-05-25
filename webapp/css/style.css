@@ -5,13 +5,14 @@
     padding: .1rem 2rem;
 }*/
 
-@font-face {
+
+/*@font-face {
     font-family: 'FontName';
     src: url('FileName.eot');
     src: url('FileName.eot?#iefix') format('embedded-opentype'), url('FileName.woff') format('woff'), url('FileName.ttf') format('truetype'), url('FileName.svg#FontName') format('svg');
     font-style: normal;
     font-weight: normal;
-}
+}*/
 
 .paddingGrid {
     padding: 0.1rem 2rem !important;
@@ -21,7 +22,7 @@
 /*.customInput1 .sapMInputBaseInner {
     background-color: #227ccc !important;
     font-weight: bolder !important;
-    font-family: cursive !important;
+    font-family: 'Righteous', cursive !important;
     color: white !important;
 }*/
 
@@ -29,7 +30,7 @@
 /*.customInput .sapMInputBaseInner {
     background-color: seagreen !important;
     font-weight: bolder !important;
-    font-family: cursive !important;
+    font-family: 'Righteous', cursive !important;
     color: white !important;
 }*/
 
@@ -75,16 +76,24 @@
     vertical-align: middle;
 }
 
+.pageHeaderLeftIcons {
+    margin-left: 10px !important;
+}
+
+.pageHeaderRightIcons {
+    margin-right: 10px !important;
+}
+
 .pageHeaderCoinsLabel {
     margin-left: 5px;
     font-size: 1.6rem;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     vertical-align: middle;
 }
 
 .menuButtons .sapMBtnContent {
     font-size: 1.4rem;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
 }
 
@@ -97,8 +106,8 @@
 
 .homePageLogoText {
     color: #fafafa;
-    font-size: 48px !important;
-    font-family: cursive;
+    font-size: 4rem !important;
+    font-family: 'Righteous', cursive;
     font-style: italic;
     font-weight: 600;
     text-shadow: 6px 6px #333333;
@@ -122,8 +131,7 @@
 }
 
 .homePage>section {
-    /*background-color: #ec407a !important;*/
-    background-image: url(../images/Backgrounds/homePage.jpg);
+    background-image: linear-gradient(red, #346187);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -132,14 +140,17 @@
 /*~~~Journey Page~~~~*/
 
 .journeyPage>section {
-    background-color: #7e57c2 !important;
+    /*background-color: #7e57c2 !important;*/
+    background-image: linear-gradient(#7e57c2, #91c8f6);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .journeyPageTitle {
     text-align: center;
     width: 100%;
     color: white;
-    font-family: cursive;
+    font-family: 'Righteous', cursive;
     font-size: 1.8rem;
     margin: 1.6rem 0.5rem !important
 }
@@ -154,7 +165,7 @@
 .journeyPageRadioButtons .sapMRbBLabel {
     width: 100%;
     /*color: white;*/
-    font-family: cursive;
+    font-family: 'Righteous', cursive;
     font-size: 1.8rem;
 }
 
@@ -170,8 +181,7 @@
 /*~~~Levels Page~~~~*/
 
 .levelsPage>section {
-    /*background-color: #bbdefb !important;*/
-    background-image: url(../images/Backgrounds/levelsPage2.jpg);
+    background-image: linear-gradient(#57d687, #a4e191);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -183,7 +193,7 @@
 
 .levelsPageTitle {
     color: white !important;
-    font-family: cursive;
+    font-family: 'Righteous', cursive;
     font-size: 1.8rem;
 }
 
@@ -237,7 +247,8 @@
 
 .mainPage>section {
     /*background-color: #bbdefb !important;*/
-    background-image: url(../images/Backgrounds/mainPage2.jpg);
+    /*background-image: url(../images/Backgrounds/mainPage2.jpg);*/
+    background-image: linear-gradient(#9961c6, #4d56bd);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -261,8 +272,8 @@
 .mainPageHintText {
     text-align: center;
     color: #f7f7f7;
-    font-size: 20px;
-    font-family: monospace;
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
 }
 
 .mainPagePuzzleVBox {}
@@ -301,9 +312,9 @@
     text-align: center !important;
     background-color: #333333;
     color: white;
-    font-size: 24px;
+    font-size: 1.7rem;
     border: 4px white solid;
-    font-family: cursive;
+    font-family: 'Righteous', cursive;
 }
 
 .mainPageMovieFirstAlphabetInput .sapMInputBaseInner {
@@ -322,8 +333,8 @@
 
 .mainPageKeyboardButtons .sapMBtnInner {
     color: black;
-    font-family: sans-serif;
-    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.7rem;
     border-radius: 10px !important;
     padding: 0px;
 }
@@ -339,7 +350,7 @@
 
 .customControlLabel {
     color: white;
-    font-family: serif;
+    font-family: 'Open Sans', serif;
 }
 
 .failedDialog {
@@ -355,7 +366,8 @@
 
 .moviePage>section {
     /*background-color: #bbdefb !important;*/
-    background-image: url(../images/Backgrounds/moviePage2.jpg);
+    /*background-image: url(../images/Backgrounds/moviePage2.jpg);*/
+    background-image: linear-gradient(#ff8888, #abe2ab);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -368,13 +380,14 @@
 }
 
 .moviePageMovieNameText {
-    font-size: 45px !important;
-    color: #fafafa !important;
-    text-shadow: 3px 3px #5c181d !important;
+    font-family: 'Righteous', cursive;
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 6px 6px #333333;
 }
 
 .moviePageHintText {
-    font-size: 23px !important;
+    font-size: 1.1rem !important;
     color: #91c8f6 !important;
     text-shadow: 2px 2px #5c181d !important;
 }
@@ -382,6 +395,51 @@
 .moviePageFooter {
     background-color: #5c181d !important;
     border-top: 0px !important;
+}
+
+
+/*Rules Page*/
+
+.rulesPage>section {
+    background-image: linear-gradient(#c5eff5, #9ec376);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rulesPageList .sapMSLITitleOnly {
+    word-break: break-all !important;
+    white-space: pre-wrap !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 900;
+    font-size: 1.4rem;
+}
+
+.rulesPageList .sapMSLI {
+    height: 100px;
+}
+
+
+/*settings page*/
+
+.settingsPage>section {
+    background-image: linear-gradient(#c5eff5, #9ec376);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.settingsPageList .sapMILILabel {
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.settingsPageList .sapMILI {
+    height: 100px;
+}
+
+.settingsPageJourneyLabel {
+    font-size: 1.3rem;
+    color: chocolate;
+    text-decoration: underline;
 }
 
 

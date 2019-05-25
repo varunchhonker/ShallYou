@@ -1,6 +1,6 @@
 sap.ui.define([
 	"ShallYou/controller/BaseController"
-], function(BaseController) {
+], function (BaseController) {
 	"use strict";
 
 	return BaseController.extend("ShallYou.controller.Home", {
@@ -11,15 +11,15 @@ sap.ui.define([
 		 * @memberOf ShallYou.view.InitialView
 		 */
 
-		onInit: function() {
+		onInit: function () {
+
+		},
+
+		onAfterRendering: function () {
 			
 		},
 
-		onAfterRendering: function() {
-
-		},
-
-		onPressPlay: function(oEvent) {
+		onPressPlay: function (oEvent) {
 			this.playButtonSound();
 			var firstTime = this.getOwnerComponent().getModel("global").getProperty("/firstTime");
 			if (firstTime) {

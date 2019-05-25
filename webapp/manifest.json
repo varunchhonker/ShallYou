@@ -72,7 +72,8 @@
 				"viewType": "XML",
 				"viewPath": "ShallYou.view",
 				"controlId": "app",
-				"controlAggregation": "pages"
+				"controlAggregation": "pages",
+				"transition": "fade"
 			},
 			"routes": [{
 				"pattern": "",

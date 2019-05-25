@@ -4,13 +4,13 @@
 		<customHeader>
 			<Bar class="pageHeader">
 				<contentLeft>
-					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons" press="onNavBack"/>
+					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons pageHeaderLeftIcons" press="onNavBack"/>
 				</contentLeft>
 				<contentMiddle>
-					<HBox>
+					<!--<HBox>
 						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
 						<Label text="{global>/Coins}" design="Bold" class="pageHeaderCoinsLabel"/>
-					</HBox>
+					</HBox>-->
 				</contentMiddle>
 			</Bar>
 		</customHeader>

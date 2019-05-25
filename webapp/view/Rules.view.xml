@@ -1,22 +1,35 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	controllerName="ShallYou.controller.Rules" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="{i18n>title}">
+	<Page title="{i18n>title}" class="rulesPage">
 		<customHeader>
 			<Bar class="pageHeader">
 				<contentLeft>
-					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons" press="onNavBack"/>
+					<core:Icon src="sap-icon://nav-back" class="pageHeaderIcons pageHeaderLeftIcons" press="onNavBack"/>
 				</contentLeft>
 				<contentMiddle>
-					<HBox>
+					<!--<HBox>
 						<core:Icon src="sap-icon://lead" class="pageHeaderIcons" press="onPressCoin"/>
 						<Label text="{global>/Coins}" design="Bold" class="pageHeaderCoinsLabel"/>
-					</HBox>
+					</HBox>-->
 				</contentMiddle>
-				
 			</Bar>
 		</customHeader>
+		<subHeader>
+			<Bar class="levelsPageSubheaderBar">
+				<contentMiddle>
+					<Title text="Rules" class="levelsPageTitle"/>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
 		<content>
-			<Text text="View rules of the game here. Anytime."/>
+			<List mode="None" width="100%" backgroundDesign="Transparent" showSeparators="None" class="rulesPageList">
+				<items>
+					<StandardListItem title="&#8226; Select your choice of movie genre (Bollywood or Hollywood)."/>
+					<StandardListItem title="&#8226; Select any of the unlocked level to start the game."/>
+					<StandardListItem title="&#8226; Next level unlocks on 20% progress of current level."/>
+					<StandardListItem title="&#8226; Enjoy!"/>
+				</items>
+			</List>
 		</content>
 	</Page>
 </mvc:View>
